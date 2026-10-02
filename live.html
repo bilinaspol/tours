@@ -41,6 +41,7 @@ function renderMatch(m) {
     const form=text('form','','editor');
     const label=text('label','Счёт по партиям');
     const input=document.createElement('input'); input.required=true; input.placeholder='11:9, 11:7'; input.value=m.sets.map(s=>`${s.a}:${s.b}`).join(', ');
+    input.addEventListener('input',()=>{input.dataset.dirty='true'});
     label.append(input);form.append(label,text('small','Например: 11:9, 11:7. Чтобы снять счёт, введите «—».'));
     const btn=text('button','Сохранить счёт');btn.type='submit';form.append(btn);
     form.addEventListener('submit', async e=>{
@@ -52,7 +53,7 @@ function renderMatch(m) {
           if(!found)throw Error('Укажите счёт через запятую: 11:9, 11:7');
           return {a:Number(found[1]),b:Number(found[2])};
         });
-        await api('PUT',`${API}/${m.id}`,{rev:m.rev,sets});message('Счёт сохранён.');await load();
+        await api('PUT',`${API}/${m.id}`,{rev:m.rev,sets});input.dataset.dirty='false';message('Счёт сохранён.');await load(true);
       }catch(err){message(err.message,true)}finally{btn.disabled=false}
     });item.append(form);
   }
@@ -60,9 +61,11 @@ function renderMatch(m) {
   for(const event of m.log){const date=new Date(event.at).toLocaleString('ru-RU'); log.append(text('li',`${date} · ${event.by} · ${event.action==='created'?'создал матч':'изменил счёт'}`))}
   item.append(log);return item;
 }
-async function load() {
+async function load(force=false) {
   try{
-    const data=await api('GET',API); const root=$('matches');root.replaceChildren();
+    const data=await api('GET',API); const root=$('matches');
+    if(!force && root.querySelector('.editor input:focus, .editor input[data-dirty="true"]')) return;
+    root.replaceChildren();
     if(!data.matches.length)root.append(text('p','Матчей пока нет.','muted'));
     else for(const match of data.matches)root.append(renderMatch(match));
     if($('status').textContent==='Загрузка матчей…') message('Обновлено.');
