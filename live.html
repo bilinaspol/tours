@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Матчи · BilinaSpol</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{font-family:system-ui,-apple-system,Arial,sans-serif;color:#17363a;background:#f4f1e9}*{box-sizing:border-box}body{margin:0}header{background:#123d47;color:white;padding:24px 16px}header .wrap,main{max-width:760px;margin:auto}h1{font-size:clamp(26px,6vw,38px);margin:4px 0 8px}p{line-height:1.45}.sub{color:#d3e8e6;margin:0}main{padding:20px 14px 80px}section,.match{background:white;border:1px solid #d4ddd7;border-radius:16px;padding:18px;margin:0 0 16px;box-shadow:0 4px 18px #17363a0c}h2{margin:0 0 14px;font-size:22px}h3{margin:0 0 10px;font-size:18px}.muted{color:#5d7476}.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}.team{overflow-wrap:anywhere;font-weight:700}.vs{font-size:13px;color:#708083}.score{margin:10px 0;font-size:22px;font-weight:800;color:#086562}input,textarea,button{font:inherit;min-height:46px;border-radius:10px}input,textarea{width:100%;padding:10px;border:1px solid #9eaead;margin:6px 0 12px}textarea{resize:vertical;min-height:64px}button{background:#176b70;color:white;border:0;padding:10px 15px;cursor:pointer;font-weight:700}button:disabled{opacity:.55}.secondary{background:#e4eded;color:#17363a}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.error{color:#9b2d25}.success{color:#146d43}.editor{margin-top:14px;padding-top:14px;border-top:1px solid #ddd}.editor label{display:block;font-weight:650}.editor small{display:block;margin:-4px 0 8px;color:#596b70}.log{border-top:1px solid #eee;margin:12px 0 0;padding:10px 0 0;color:#60767b;font-size:13px;list-style:none}.log li{margin:4px 0}a{color:#176b70}@media(max-width:480px){.teams{grid-template-columns:1fr}.vs{display:none}.team+ .team{border-top:1px solid #e5e5e5;padding-top:8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./" style="color:#cce7e2">← BilinaSpol</a><h1>Матчи турнира</h1><p class="sub">Счёт появляется здесь после сохранения организатором</p></div></header>
+<main><p id="status" role="status" class="muted">Загрузка матчей…</p><section id="admin" hidden><h2>Новый матч</h2><p class="muted">Откройте эту страницу через турнирного Telegram-бота. Записывать может только администратор.</p><form id="new-match"><label>Команда А: один или два игрока, каждый с новой строки<textarea name="a" required placeholder="Имя игрока 1&#10;Имя игрока 2"></textarea></label><label>Команда Б: один или два игрока, каждый с новой строки<textarea name="b" required placeholder="Имя игрока 1&#10;Имя игрока 2"></textarea></label><button type="submit">Добавить матч</button></form></section><section><h2>Результаты</h2><div id="matches" aria-live="polite"></div></section></main>
+<script>
+'use strict';
+const API = 'https://tours.multirate.cc/api/matches';
+const initData = window.Telegram?.WebApp?.initData || '';
+const $ = id => document.getElementById(id);
+if (initData) { $('admin').hidden = false; window.Telegram.WebApp.ready(); }
+const text = (tag, value, cls) => { const e = document.createElement(tag); e.textContent = value; if(cls)e.className=cls; return e; };
+const names = v => v.split('\n').map(x => x.trim()).filter(Boolean);
+function message(value, isError = false) { $('status').textContent = value; $('status').className = isError ? 'error' : 'muted'; }
+async function api(method, url, body) {
+  const r = await fetch(url, { method, cache:'no-store', headers: {
+    ...(body ? {'Content-Type':'application/json'} : {}),
+    ...(initData && method !== 'GET' ? {'X-Telegram-Init-Data':initData} : {}),
+  }, body: body ? JSON.stringify(body) : undefined });
+  const data = await r.json();
+  if (!r.ok) throw Error(data.error === 'stale_revision' ? 'Матч изменился. Обновите страницу.' :
+    data.error === 'admin_telegram_required' ? 'Нет прав администратора или истекла сессия Telegram.' :
+    data.error === 'invalid_score' ? 'Проверьте счёт: целые числа, без ничьих.' :
+    `Ошибка сервера (${r.status}).`);
+  return data;
+}
+function renderMatch(m) {
+  const item=text('article','','match');
+  const teams=text('div','','teams');
+  teams.append(text('div',m.teamA.join(' / '),'team'),text('span','против','vs'),text('div',m.teamB.join(' / '),'team'));
+  item.append(teams,text('div',m.sets.length ? m.sets.map(s=>`${s.a}:${s.b}`).join(' · ') : 'Матч ещё не сыгран','score'));
+  if(initData){
+    const form=text('form','','editor');
+    const label=text('label','Счёт по партиям');
+    const input=document.createElement('input'); input.required=true; input.placeholder='11:9, 11:7'; input.value=m.sets.map(s=>`${s.a}:${s.b}`).join(', ');
+    label.append(input);form.append(label,text('small','Например: 11:9, 11:7. Чтобы снять счёт, введите «—».'));
+    const btn=text('button','Сохранить счёт');btn.type='submit';form.append(btn);
+    form.addEventListener('submit', async e=>{
+      e.preventDefault();btn.disabled=true;
+      try{
+        const value=input.value.trim();
+        const sets=value==='—' ? [] : value.split(',').map(part=>{
+          const found=/^\s*(\d{1,2})\s*:\s*(\d{1,2})\s*$/.exec(part);
+          if(!found)throw Error('Укажите счёт через запятую: 11:9, 11:7');
+          return {a:Number(found[1]),b:Number(found[2])};
+        });
+        await api('PUT',`${API}/${m.id}`,{rev:m.rev,sets});message('Счёт сохранён.');await load();
+      }catch(err){message(err.message,true)}finally{btn.disabled=false}
+    });item.append(form);
+  }
+  const log=text('ul','','log');
+  for(const event of m.log){const date=new Date(event.at).toLocaleString('ru-RU'); log.append(text('li',`${date} · ${event.by} · ${event.action==='created'?'создал матч':'изменил счёт'}`))}
+  item.append(log);return item;
+}
+async function load() {
+  try{
+    const data=await api('GET',API); const root=$('matches');root.replaceChildren();
+    if(!data.matches.length)root.append(text('p','Матчей пока нет.','muted'));
+    else for(const match of data.matches)root.append(renderMatch(match));
+    if($('status').textContent==='Загрузка матчей…') message('Обновлено.');
+  }catch(err){message(`Не удалось загрузить матчи: ${err.message}`,true)}
+}
+$('new-match').addEventListener('submit',async e=>{
+  e.preventDefault();const form=e.currentTarget;const btn=form.querySelector('button');btn.disabled=true;
+  try{
+    const teamA=names(form.elements.a.value),teamB=names(form.elements.b.value);
+    if(teamA.length<1||teamA.length>2||teamB.length<1||teamB.length>2)throw Error('Укажите одного или двух игроков в каждой команде.');
+    await api('POST',API,{teamA,teamB});form.reset();message('Матч добавлен.');await load();
+  }catch(err){message(err.message,true)}finally{btn.disabled=false}
+});
+load();setInterval(load,15000);
+</script>
+</body></html>
