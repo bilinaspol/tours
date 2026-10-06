@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Правка игр · BilinaSpol</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E🏓%3C/text%3E%3C/svg%3E">
+<style>
+:root{font-family:system-ui,-apple-system,Arial,sans-serif;color:#17363a;background:#f4f1e9}*{box-sizing:border-box}body{margin:0}header{background:#123d47;color:white;padding:20px 16px}header .wrap,main{max-width:620px;margin:auto}header a{color:#cce7e2}h1{font-size:clamp(26px,6vw,36px);margin:8px 0 0}main{padding:16px 14px 72px}section,.match{background:#fff;border:1px solid #d4ddd7;border-radius:16px;padding:16px;margin:0 0 16px;box-shadow:0 4px 18px #17363a0c}h2{margin:0 0 14px;font-size:22px}h3{margin:16px 0 10px;font-size:18px;color:#22545a}.subhead{border-left:4px solid #176b70;padding-left:10px}.muted{color:#5d7476}.error{color:#9b2d25}.success{color:#146d43}.teams .team{font-weight:700;overflow-wrap:anywhere}.teams .team:last-child{border-top:1px solid #e5e5e5;padding-top:8px;margin-top:8px}.result{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0}.score{font-size:22px;font-weight:800;color:#086562}.match-date{font-size:14px;color:#536d70}.match-title{font-size:13px;font-weight:700;color:#41656a;margin-top:2px}.log{border-top:1px solid #eee;margin:11px 0 0;padding:9px 0 0;color:#60767b;font-size:12px;list-style:none}.log li{margin:4px 0;overflow-wrap:anywhere}button{font:inherit;min-height:44px;border:0;border-radius:10px;background:#176b70;color:#fff;padding:9px 15px;cursor:pointer;font-weight:700}button:disabled{opacity:.55}.secondary{background:#e4eded;color:#17363a}.edit-button{min-height:38px;padding:6px 12px}.controls{display:flex;gap:8px;flex-wrap:wrap}.editor{margin-top:13px;padding-top:13px;border-top:1px solid #ddd}.editor label{display:block;font-size:14px;font-weight:650;margin-top:10px}.editor input,.editor textarea{font:inherit;display:block;width:100%;min-width:0;padding:9px;border:1px solid #9eaead;border-radius:10px;background:#fff;margin-top:5px}.editor input{min-height:44px}.editor textarea{min-height:68px;resize:vertical}.editor .fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.editor .controls{margin-top:14px}@media(max-width:480px){.editor .fields{grid-template-columns:1fr}.editor input{font-size:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./live.html">← Игры турнира</a><h1>Правка игр</h1></div></header>
+<main>
+<p id="status" role="status" class="muted">Загрузка…</p>
+<section id="login-box"><p>Войти через Telegram может только администратор турнира. Пароль CouchDB сюда не вводится.</p><div id="telegram-login"><script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="pickleball_pro_bot" data-size="large" data-userpic="false" data-onauth="onTelegramAuth(user)"></script></div><p id="login-help" class="muted">Если кнопка входа не появилась, проверьте доступ к telegram.org и настройку домена бота.</p></section>
+<section id="list"><h2>Игры</h2><div id="matches"></div></section>
+</main>
+<script>
+'use strict';
+const API='https://tours.multirate.cc/api';
+const $=id=>document.getElementById(id);
+let session=null;
+const text=(tag,value,cls)=>{const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el};
+const names=value=>value.split('\n').map(s=>s.trim()).filter(Boolean);
+const score=sets=>(sets||[]).map(s=>`${s.a}:${s.b}`).join(', ');
+const parseScore=value=>{if(!value.trim())return [];return value.split(',').map(part=>{const m=/^\s*(\d{1,2})\s*:\s*(\d{1,2})\s*$/.exec(part);if(!m)throw Error('Счёт: используйте формат 11:9, 11:7');return {a:Number(m[1]),b:Number(m[2])}})};
+const mskInput=date=>new Date(date.getTime()+3*3600*1000).toISOString().slice(0,16);
+function toIso(value){if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(value))throw Error('Проверьте дату и время (МСК).');const d=new Date(value+':00+03:00');if(Number.isNaN(d.getTime())||mskInput(d)!==value)throw Error('Проверьте дату и время (МСК).');return d.toISOString()}
+function shortDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return 'Дата не указана';return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Moscow'}).format(d).replace(',','')}
+function notify(value,cls='muted'){$('status').textContent=value;$('status').className=cls}
+function readableError(data,status){return {stale_revision:'Игра изменилась после открытия формы. Обновите страницу и повторите правку.',admin_required:'Вход администратора необходим.',telegram_required:'Сессия закончилась. Войдите снова.',invalid_team:'Проверьте составы: 1–2 игрока в каждой команде.',invalid_score:'Проверьте счёт.',invalid_played_at:'Проверьте дату.',invalid_tournament:'Проверьте название турнира.',revision_required:'Устаревшая версия игры.'}[data?.error]||`Ошибка сервера (${status}).`}
+async function api(method,path,body,authorized=false){
+  const r=await fetch(API+path,{method,cache:'no-store',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(authorized&&session?{'X-Tours-Admin-Session':session}:{})},body:body===undefined?undefined:JSON.stringify(body)});
+  const data=await r.json();if(!r.ok)throw Error(readableError(data,r.status));return data;
+}
+function eventLabel(action){return {created:'добавил игру',score_updated:'изменил счёт',metadata_updated:'изменил дату или турнир',match_updated:'изменил игру'}[action]||action}
+function eventDetails(details){if(!details)return '';const labels={teamA:'команда А',teamB:'команда Б',sets:'счёт',playedAt:'дата',tournament:'турнир'};
+  const show=(key,value)=>key==='sets'?(value?.length?score(value):'—'):key==='playedAt'?(value?shortDate(value):'—'):Array.isArray(value)?value.join(' / '):(value||'—');
+  return Object.entries(details).filter(([key])=>labels[key]).map(([key,diff])=>`${labels[key]}: ${diff.before===undefined?'':show(key,diff.before)+' → '}${show(key,diff.after)}`).join('; ')}
+function makeEditor(m,card,editButton){
+  const form=text('form','','editor');
+  const teams=text('div','','fields');
+  const addField=(parent,label,tag,value)=>{const wrap=text('label',label);const input=document.createElement(tag);input.value=value;wrap.append(input);parent.append(wrap);input.addEventListener('input',()=>{input.dataset.dirty='true'});return input};
+  const a=addField(teams,'Команда А (каждый игрок с новой строки)','textarea',m.teamA.join('\n'));
+  const b=addField(teams,'Команда Б (каждый игрок с новой строки)','textarea',m.teamB.join('\n'));
+  form.append(teams);
+  const more=text('div','','fields');
+  const scoreInput=addField(more,'Счёт (11:9, 11:7)','input',score(m.sets));
+  const date=addField(more,'Дата и время (МСК)','input',mskInput(new Date(m.playedAt||m.log?.[0]?.at||m.updatedAt)));
+  date.type='datetime-local';
+  form.append(more);
+  const title=addField(form,'Турнир','input',m.tournament||'Не указан');title.maxLength=100;
+  const buttons=text('div','','controls');const save=text('button','Сохранить изменения');save.type='submit';const cancel=text('button','Отмена','secondary');cancel.type='button';cancel.addEventListener('click',()=>{form.remove();editButton.disabled=false});buttons.append(save,cancel);form.append(buttons);
+  form.addEventListener('submit',async e=>{e.preventDefault();save.disabled=true;
+    try{
+      const payload={rev:m.rev};
+      if(a.dataset.dirty==='true')payload.teamA=names(a.value);
+      if(b.dataset.dirty==='true')payload.teamB=names(b.value);
+      if(scoreInput.dataset.dirty==='true')payload.sets=parseScore(scoreInput.value);
+      if(date.dataset.dirty==='true')payload.playedAt=toIso(date.value);
+      if(title.dataset.dirty==='true')payload.tournament=title.value.trim();
+      if(Object.keys(payload).length===1){notify('Изменений нет.');return}
+      if((payload.teamA&&(!payload.teamA.length||payload.teamA.length>2))||(payload.teamB&&(!payload.teamB.length||payload.teamB.length>2)))throw Error('Укажите 1–2 игроков в каждой команде.');
+      await api('PUT',`/matches/${encodeURIComponent(m.id)}`,payload,true);
+      notify('Изменения сохранены.','success');await load();
+    }catch(err){notify(err.message,'error')}finally{save.disabled=false}
+  });
+  card.insertBefore(form,card.querySelector('.log'));
+}
+function renderMatch(m){
+  const card=text('article','','match'),teams=text('div','','teams');
+  teams.append(text('div',m.teamA.join(' / '),'team'),text('div',m.teamB.join(' / '),'team'));
+  const row=text('div','','result');row.append(text('span',m.sets?.length?m.sets.map(s=>`${s.a}:${s.b}`).join(' · '):'Счёт ещё не внесён','score'));
+  if(session){const edit=text('button','EDIT','edit-button');edit.type='button';edit.setAttribute('aria-label','Редактировать матч');edit.addEventListener('click',()=>{edit.disabled=true;makeEditor(m,card,edit)});row.append(edit)}
+  card.append(teams,row,text('div',shortDate(m.playedAt||m.log?.[0]?.at||m.updatedAt),'match-date'),text('div',m.tournament||'Не указан','match-title'));
+  const log=text('ul','','log');for(const e of m.log||[]){const detail=eventDetails(e.details);log.append(text('li',`${shortDate(e.at)} · ${e.by} · ${eventLabel(e.action)}${detail?' · '+detail:''}`))}card.append(log);return card;
+}
+async function load(){
+  const data=await api('GET','/matches');const root=$('matches');root.replaceChildren();
+  const when=m=>new Date(m.playedAt||m.log?.[0]?.at||m.updatedAt).getTime()||0;
+  const matches=data.matches.sort((a,b)=>when(b)-when(a)||a.id.localeCompare(b.id));
+  if(!matches.length)root.append(text('p','Игр пока нет.','muted'));
+  let previous=null;for(const m of matches){const title=m.tournament||'Не указан';if(title!==previous)root.append(text('h3',title,'subhead'));root.append(renderMatch(m));previous=title}
+}
+window.onTelegramAuth=async function(auth){
+  try{
+    if(!auth?.hash)throw Error('Вход через Telegram не завершён.');
+    const logged=await api('POST','/admin/login',{auth});
+    session=logged.session;notify('Вход администратора выполнен.','success');$('login-box').hidden=true;await load();
+  }catch(err){notify(err.message,'error')}
+};
+(async()=>{
+  try{await load();notify('Обновлено.')}catch(err){notify(`Не удалось загрузить игры: ${err.message}`,'error')}
+})();
+</script>
+</body>
+</html>
