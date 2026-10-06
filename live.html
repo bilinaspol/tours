@@ -7,9 +7,12 @@
 <style>
 :root{font-family:system-ui,-apple-system,Arial,sans-serif;color:#17363a;background:#f4f1e9}*{box-sizing:border-box}body{margin:0}header{background:#123d47;color:#fff;padding:22px 16px}header .wrap,main{max-width:560px;margin:auto}h1{font-size:clamp(26px,6vw,38px);margin:8px 0 0}main{padding:16px 14px 80px}section,.match{background:#fff;border:1px solid #d4ddd7;border-radius:16px;padding:16px;margin:0 0 16px;box-shadow:0 4px 18px #17363a0c}h2{margin:0 0 15px;font-size:22px}h3{margin:16px 0 10px;font-size:18px;color:#22545a}.muted{color:#5d7476}.team{font-weight:700;overflow-wrap:anywhere}.teams{display:block}.vs{display:none}.teams .team:last-child{border-top:1px solid #e5e5e5;padding-top:8px;margin-top:8px}.score{font-size:22px;font-weight:800;color:#086562;margin:9px 0}.match-date{font-size:14px;color:#536d70}.match-title{font-size:13px;font-weight:700;color:#41656a;margin-top:2px}label{display:block;font-weight:650;font-size:14px}input,textarea,button{font:inherit;min-height:44px;border-radius:10px}input,textarea{width:100%;min-width:0;padding:9px;border:1px solid #9eaead;margin:5px 0 10px;background:#fff}textarea{resize:vertical;min-height:65px}button{background:#176b70;color:white;border:0;padding:10px 14px;cursor:pointer;font-weight:700}button:disabled{opacity:.55}.secondary{background:#e4eded;color:#17363a}.fields{display:grid;grid-template-columns:minmax(0,106px) minmax(0,1fr);gap:9px;align-items:end}.fields label{min-width:0}.fields input{font-size:14px}.title-row{display:flex;gap:8px;align-items:end}.title-row label{flex:1;min-width:0}.title-row button{margin:0 0 10px;white-space:nowrap;font-size:13px}.error{color:#9b2d25}.success{color:#146d43}.log{border-top:1px solid #eee;margin:11px 0 0;padding:9px 0 0;color:#60767b;font-size:12px;list-style:none}.log li{margin:4px 0}.hint{font-size:13px;color:#506d70}.subhead{border-left:4px solid #176b70;padding-left:10px}a{color:#176b70}header a{color:#cce7e2}@media(max-width:480px){.title-row{display:block}.title-row button{margin:-4px 0 14px}.fields{grid-template-columns:minmax(0,1fr)}.fields input{font-size:16px}}
 </style>
+<style>
+.match-meta{margin-bottom:10px}.match-title{margin:0 0 4px}.teams{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:10px;align-items:center}.teams .team{grid-column:1}.teams .team-b{border-top:1px solid #e5e5e5;padding-top:8px;margin-top:8px}.teams .score{grid-column:2;grid-row:1 / span 2;max-width:94px;margin:0;text-align:right;overflow-wrap:anywhere}
+</style>
 </head>
 <body>
-<header><div class="wrap"><a href="./">← BilinaSpol</a><h1>Игры турнира</h1></div></header>
+<header><div class="wrap"><a href="./">← BilinaSpol</a></div></header>
 <main>
 <p id="status" role="status" class="muted">Загрузка игр…</p>
 <section id="join" hidden><p>Чтобы записывать игры и счёт, нужен доступ редактора.</p><button type="button" id="join-button">Отправить заявку администратору</button><p id="join-state" class="hint"></p></section>
@@ -60,28 +63,20 @@ async function saveDefault(title){
     catch(err){if(attempt)throw err;current=await api('GET','/config');if(current.defaultTournament===value){config=current;return}}
   }
 }
-function eventLabel(action){return {created:'добавил игру',score_updated:'изменил счёт',metadata_updated:'изменил дату или турнир',match_updated:'изменил игру'}[action]||action}
-function eventDetails(details){
-  if(!details)return '';
-  const label={sets:'счёт',playedAt:'дата',tournament:'турнир',teamA:'команда А',teamB:'команда Б'};
-  const show=(key,value)=>key==='sets'?(value?.length?fmtScore(value):'—'):key==='playedAt'?(value?shortDate(value):'—'):Array.isArray(value)?value.join(' / '):(value||'—');
-  return Object.entries(details).filter(([key])=>label[key]).map(([key,diff])=>`${label[key]}: ${diff.before===undefined?'':show(key,diff.before)+' → '}${show(key,diff.after)}`).join('; ');
-}
 function renderMatch(m){
   const card=text('article','','match');const teams=text('div','','teams');
-  teams.append(text('div',m.teamA.join(' / '),'team'),text('span','против','vs'),text('div',m.teamB.join(' / '),'team'));
-  const playedAt=m.playedAt||m.log?.[0]?.at||m.updatedAt;
-  card.append(teams,text('div',m.sets.length?m.sets.map(s=>`${s.a}:${s.b}`).join(' · '):'Счёт ещё не внесён','score'),text('div',shortDate(playedAt),'match-date'),text('div',m.tournament||'Не указан','match-title'));
-  const log=text('ul','','log');for(const e of m.log||[]){const detail=eventDetails(e.details);log.append(text('li',`${shortDate(e.at)} · ${e.by} · ${eventLabel(e.action)}${detail?' · '+detail:''}`))}card.append(log);return card;
+  const playedAt=m.playedAt||m.updatedAt||m.log?.at(-1)?.at;
+  const meta=text('div','','match-meta');meta.append(text('div',m.tournament||'Не указан','match-title'),text('div',shortDate(playedAt),'match-date'));
+  teams.append(text('div',m.teamA.join(' / '),'team'),text('div',m.teamB.join(' / '),'team team-b'),text('div',m.sets.length?m.sets.map(s=>`${s.a}:${s.b}`).join(' · '):'Счёт ещё не внесён','score'));
+  card.append(meta,teams);return card;
 }
 async function load(){
   try{
     const data=await api('GET','/matches');const root=$('matches');
-    const when=m=>new Date(m.playedAt||m.log?.[0]?.at||m.updatedAt).getTime()||0;
+    const when=m=>new Date(m.playedAt||m.updatedAt||m.log?.at(-1)?.at).getTime()||0;
     const list=data.matches.sort((a,b)=>when(b)-when(a)||a.id.localeCompare(b.id));root.replaceChildren();
     if(!list.length)root.append(text('p','Игр пока нет.','muted'));
-    let previous=null;
-    for(const match of list){const title=match.tournament||'Не указан';if(title!==previous)root.append(text('h3',title,'subhead'));root.append(renderMatch(match));previous=title}
+    for(const match of list)root.append(renderMatch(match));
     if($('status').textContent==='Загрузка игр…')message('Обновлено.');
   }catch(err){message(`Не удалось загрузить игры: ${err.message}`,'error')}
 }
