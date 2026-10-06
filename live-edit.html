@@ -8,7 +8,7 @@
 <style>
 :root{font-family:system-ui,-apple-system,Arial,sans-serif;color:#17363a;background:#f4f1e9}*{box-sizing:border-box}body{margin:0}header{background:#123d47;color:white;padding:20px 16px}header .wrap,main{max-width:620px;margin:auto}header a{color:#cce7e2}h1{font-size:clamp(26px,6vw,36px);margin:8px 0 0}main{padding:16px 14px 72px}section,.match{background:#fff;border:1px solid #d4ddd7;border-radius:16px;padding:16px;margin:0 0 16px;box-shadow:0 4px 18px #17363a0c}h2{margin:0 0 14px;font-size:22px}h3{margin:16px 0 10px;font-size:18px;color:#22545a}.subhead{border-left:4px solid #176b70;padding-left:10px}.muted{color:#5d7476}.error{color:#9b2d25}.success{color:#146d43}.teams .team{font-weight:700;overflow-wrap:anywhere}.teams .team:last-child{border-top:1px solid #e5e5e5;padding-top:8px;margin-top:8px}.result{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0}.score{font-size:22px;font-weight:800;color:#086562}.match-date{font-size:14px;color:#536d70}.match-title{font-size:13px;font-weight:700;color:#41656a;margin-top:2px}.log{border-top:1px solid #eee;margin:11px 0 0;padding:9px 0 0;color:#60767b;font-size:12px;list-style:none}.log li{margin:4px 0;overflow-wrap:anywhere}button{font:inherit;min-height:44px;border:0;border-radius:10px;background:#176b70;color:#fff;padding:9px 15px;cursor:pointer;font-weight:700}button:disabled{opacity:.55}.secondary{background:#e4eded;color:#17363a}.edit-button{min-height:38px;padding:6px 12px}.controls{display:flex;gap:8px;flex-wrap:wrap}.editor{margin-top:13px;padding-top:13px;border-top:1px solid #ddd}.editor label{display:block;font-size:14px;font-weight:650;margin-top:10px}.editor input,.editor textarea{font:inherit;display:block;width:100%;min-width:0;padding:9px;border:1px solid #9eaead;border-radius:10px;background:#fff;margin-top:5px}.editor input{min-height:44px}.editor textarea{min-height:68px;resize:vertical}.editor .fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.editor .controls{margin-top:14px}@media(max-width:480px){.editor .fields{grid-template-columns:1fr}.editor input{font-size:16px}}
 </style>
-<style>.match .team,.match .score{font-size:13px;font-weight:700}</style>
+<style>.match .team,.match .score{font-size:15px;font-weight:700}</style>
 </head>
 <body>
 <header><div class="wrap"><a href="./live.html">← Игры турнира</a><h1>Правка игр</h1></div></header>
@@ -55,8 +55,8 @@ async function api(method,path,body,authorized=false){
   const r=await fetch(API+path,{method,cache:'no-store',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(authorized&&session?{'X-Tours-Admin-Session':session}:{})},body:body===undefined?undefined:JSON.stringify(body)});
   const data=await r.json();if(!r.ok){if(authorized&&data?.error==='telegram_required')clearSession();throw Error(readableError(data,r.status))}return data;
 }
-function eventLabel(action){return {created:'добавил игру',score_updated:'изменил счёт',metadata_updated:'изменил дату или турнир',match_updated:'изменил игру'}[action]||action}
-function eventDetails(details){if(!details)return '';const labels={teamA:'команда А',teamB:'команда Б',sets:'счёт',playedAt:'дата',tournament:'турнир'};
+function eventLabel(action){return {created:'добавил игру',score_updated:'изменил счёт игры',metadata_updated:'изменил дату или турнир игры',match_updated:'изменил игру'}[action]||action}
+function eventDetails(details){if(!details)return '';const labels={sets:'счёт',playedAt:'дата',tournament:'турнир'};
   const show=(key,value)=>key==='sets'?(value?.length?score(value):'—'):key==='playedAt'?(value?shortDate(value):'—'):Array.isArray(value)?value.join(' / '):(value||'—');
   return Object.entries(details).filter(([key])=>labels[key]).map(([key,diff])=>`${labels[key]}: ${diff.before===undefined?'':show(key,diff.before)+' → '}${show(key,diff.after)}`).join('; ')}
 function makeEditor(m,card,editButton){
@@ -89,21 +89,36 @@ function makeEditor(m,card,editButton){
   });
   card.insertBefore(form,card.querySelector('.log'));
 }
-function renderMatch(m){
+function matchNumbers(matches){
+  const created=m=>new Date(m.log?.find(e=>e.action==='created')?.at||m.log?.[0]?.at||m.updatedAt||m.playedAt).getTime()||0;
+  return new Map([...matches].sort((a,b)=>created(a)-created(b)||a.id.localeCompare(b.id)).map((m,i)=>[m.id,i+1]));
+}
+function eventMatchups(m){
+  let a=m.teamA,b=m.teamB;const events=m.log||[],pairs=new Array(events.length);
+  for(let i=events.length-1;i>=0;i--){
+    pairs[i]=`${a.join(' / ')} - ${b.join(' / ')}`;
+    const details=events[i].details||{};
+    if(Array.isArray(details.teamA?.before))a=details.teamA.before;
+    if(Array.isArray(details.teamB?.before))b=details.teamB.before;
+  }
+  return pairs;
+}
+function renderMatch(m,number){
   const card=text('article','','match'),teams=text('div','','teams');
   teams.append(text('div',m.teamA.join(' / '),'team'),text('div',m.teamB.join(' / '),'team'));
   const row=text('div','','result');row.append(text('span',m.sets?.length?m.sets.map(s=>`${s.a}:${s.b}`).join(' · '):'Счёт ещё не внесён','score'));
   if(session&&expiresAt>Date.now()){const edit=text('button','EDIT','edit-button');edit.type='button';edit.setAttribute('aria-label','Редактировать матч');edit.addEventListener('click',()=>{edit.disabled=true;makeEditor(m,card,edit)});row.append(edit)}
-  card.append(teams,row,text('div',shortDate(m.playedAt||m.updatedAt||m.log?.at(-1)?.at),'match-date'),text('div',m.tournament||'Не указан','match-title'));
-  const log=text('ul','','log');for(const e of m.log||[]){const detail=eventDetails(e.details);log.append(text('li',`${shortDate(e.at)} · ${e.by} · ${eventLabel(e.action)}${detail?' · '+detail:''}`))}card.append(log);return card;
+  card.append(teams,row,text('div',shortDate(m.playedAt||m.updatedAt||m.log?.at(-1)?.at),'match-date'),text('div',`${number}. ${m.tournament||'Не указан'}`,'match-title'));
+  const log=text('ul','','log'),pairs=eventMatchups(m);for(const [i,e] of (m.log||[]).entries()){const detail=eventDetails(e.details);log.append(text('li',`${shortDate(e.at)} · ${e.by||'Пользователь Telegram'} · ${eventLabel(e.action)} №${number}: ${pairs[i]}${detail?' · '+detail:''}`))}card.append(log);return card;
 }
 async function load(){
   const data=await api('GET','/matches');const root=$('matches');root.replaceChildren();
   const when=m=>new Date(m.playedAt||m.updatedAt||m.log?.at(-1)?.at).getTime()||0;
   const updated=m=>new Date(m.updatedAt||m.log?.at(-1)?.at).getTime()||0;
+  const numbers=matchNumbers(data.matches);
   const matches=data.matches.sort((a,b)=>when(b)-when(a)||updated(b)-updated(a)||b.id.localeCompare(a.id));
   if(!matches.length)root.append(text('p','Игр пока нет.','muted'));
-  let previous=null;for(const m of matches){const title=m.tournament||'Не указан';if(title!==previous)root.append(text('h3',title,'subhead'));root.append(renderMatch(m));previous=title}
+  let previous=null;for(const m of matches){const title=m.tournament||'Не указан';if(title!==previous)root.append(text('h3',title,'subhead'));root.append(renderMatch(m,numbers.get(m.id)));previous=title}
 }
 window.onTelegramAuth=async function(auth){
   try{
