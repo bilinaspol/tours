@@ -20,7 +20,27 @@
 'use strict';
 const API='https://tours.multirate.cc/api';
 const $=id=>document.getElementById(id);
-let session=null;
+const SESSION_KEY='tours-admin-v1';
+let session=null,expiresAt=0,expiryTimer=null;
+function clearSession(){
+  session=null;expiresAt=0;clearTimeout(expiryTimer);
+  try{sessionStorage.removeItem(SESSION_KEY)}catch{}
+  $('login-box').hidden=false;
+  document.querySelectorAll('.edit-button,.editor').forEach(el=>el.remove());
+}
+function scheduleExpiry(){
+  clearTimeout(expiryTimer);
+  expiryTimer=setTimeout(()=>{
+    if(Date.now()<expiresAt){scheduleExpiry();return}
+    clearSession();notify('Сессия закончилась. Войдите снова.','error');
+  },Math.min(2147483647,Math.max(0,expiresAt-Date.now()+25)));
+}
+function setSession(value){
+  if(typeof value?.session!=='string'||!value.session||!Number.isSafeInteger(value.expiresAt)||value.expiresAt<=Date.now())throw Error('Вход через Telegram не завершён.');
+  session=value.session;expiresAt=value.expiresAt;
+  try{sessionStorage.setItem(SESSION_KEY,JSON.stringify({session,expiresAt}))}catch{}
+  $('login-box').hidden=true;scheduleExpiry();
+}
 const text=(tag,value,cls)=>{const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el};
 const names=value=>value.split('\n').map(s=>s.trim()).filter(Boolean);
 const score=sets=>(sets||[]).map(s=>`${s.a}:${s.b}`).join(', ');
@@ -29,10 +49,10 @@ const mskInput=date=>new Date(date.getTime()+3*3600*1000).toISOString().slice(0,
 function toIso(value){if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(value))throw Error('Проверьте дату и время (МСК).');const d=new Date(value+':00+03:00');if(Number.isNaN(d.getTime())||mskInput(d)!==value)throw Error('Проверьте дату и время (МСК).');return d.toISOString()}
 function shortDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return 'Дата не указана';return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Moscow'}).format(d).replace(',','')}
 function notify(value,cls='muted'){$('status').textContent=value;$('status').className=cls}
-function readableError(data,status){return {stale_revision:'Игра изменилась после открытия формы. Обновите страницу и повторите правку.',admin_required:'Вход администратора необходим.',telegram_required:'Сессия закончилась. Войдите снова.',invalid_team:'Проверьте составы: 1–2 игрока в каждой команде.',invalid_score:'Проверьте счёт.',invalid_played_at:'Проверьте дату.',invalid_tournament:'Проверьте название турнира.',revision_required:'Устаревшая версия игры.'}[data?.error]||`Ошибка сервера (${status}).`}
+function readableError(data,status){return {stale_revision:'Игра изменилась после открытия формы. Обновите страницу и повторите правку.',admin_required:'Вход администратора необходим.',invalid_login:'Не удалось подтвердить вход. Если уже входили в другой вкладке, попробуйте через несколько минут.',telegram_required:'Сессия закончилась. Войдите снова.',invalid_team:'Проверьте составы: 1–2 игрока в каждой команде.',invalid_score:'Проверьте счёт.',invalid_played_at:'Проверьте дату.',invalid_tournament:'Проверьте название турнира.',revision_required:'Устаревшая версия игры.'}[data?.error]||`Ошибка сервера (${status}).`}
 async function api(method,path,body,authorized=false){
   const r=await fetch(API+path,{method,cache:'no-store',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(authorized&&session?{'X-Tours-Admin-Session':session}:{})},body:body===undefined?undefined:JSON.stringify(body)});
-  const data=await r.json();if(!r.ok)throw Error(readableError(data,r.status));return data;
+  const data=await r.json();if(!r.ok){if(authorized&&data?.error==='telegram_required')clearSession();throw Error(readableError(data,r.status))}return data;
 }
 function eventLabel(action){return {created:'добавил игру',score_updated:'изменил счёт',metadata_updated:'изменил дату или турнир',match_updated:'изменил игру'}[action]||action}
 function eventDetails(details){if(!details)return '';const labels={teamA:'команда А',teamB:'команда Б',sets:'счёт',playedAt:'дата',tournament:'турнир'};
@@ -72,7 +92,7 @@ function renderMatch(m){
   const card=text('article','','match'),teams=text('div','','teams');
   teams.append(text('div',m.teamA.join(' / '),'team'),text('div',m.teamB.join(' / '),'team'));
   const row=text('div','','result');row.append(text('span',m.sets?.length?m.sets.map(s=>`${s.a}:${s.b}`).join(' · '):'Счёт ещё не внесён','score'));
-  if(session){const edit=text('button','EDIT','edit-button');edit.type='button';edit.setAttribute('aria-label','Редактировать матч');edit.addEventListener('click',()=>{edit.disabled=true;makeEditor(m,card,edit)});row.append(edit)}
+  if(session&&expiresAt>Date.now()){const edit=text('button','EDIT','edit-button');edit.type='button';edit.setAttribute('aria-label','Редактировать матч');edit.addEventListener('click',()=>{edit.disabled=true;makeEditor(m,card,edit)});row.append(edit)}
   card.append(teams,row,text('div',shortDate(m.playedAt||m.log?.[0]?.at||m.updatedAt),'match-date'),text('div',m.tournament||'Не указан','match-title'));
   const log=text('ul','','log');for(const e of m.log||[]){const detail=eventDetails(e.details);log.append(text('li',`${shortDate(e.at)} · ${e.by} · ${eventLabel(e.action)}${detail?' · '+detail:''}`))}card.append(log);return card;
 }
@@ -86,11 +106,15 @@ async function load(){
 window.onTelegramAuth=async function(auth){
   try{
     if(!auth?.hash)throw Error('Вход через Telegram не завершён.');
-    const logged=await api('POST','/admin/login',{auth});
-    session=logged.session;notify('Вход администратора выполнен.','success');$('login-box').hidden=true;await load();
+    setSession(await api('POST','/admin/login',{auth}));
+    notify('Вход администратора выполнен.','success');await load();
   }catch(err){notify(err.message,'error')}
 };
 (async()=>{
+  try{
+    const saved=JSON.parse(sessionStorage.getItem(SESSION_KEY));
+    if(saved)setSession(saved);
+  }catch{clearSession()}
   try{await load();notify('Обновлено.')}catch(err){notify(`Не удалось загрузить игры: ${err.message}`,'error')}
 })();
 </script>
