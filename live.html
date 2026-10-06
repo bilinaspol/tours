@@ -15,7 +15,7 @@
 <header><div class="wrap"><a href="./">← BilinaSpol</a></div></header>
 <main>
 <p id="status" role="status" class="muted">Загрузка игр…</p>
-<section id="join" hidden><p>Чтобы записывать игры и счёт, нужен доступ редактора.</p><button type="button" id="join-button">Отправить заявку администратору</button><p id="join-state" class="hint"></p></section>
+<section id="join" hidden><p>Новые игры и счёт можно добавлять без заявки. Для изменения уже записанной игры нужно разрешение администратора.</p><button type="button" id="join-button">Запросить право редактирования</button><p id="join-state" class="hint"></p></section>
 <section id="create" hidden>
   <form id="new-match">
     <label>Команда А: один или два игрока, каждый с новой строки<textarea name="a" required placeholder="Имя игрока 1&#10;Имя игрока 2"></textarea></label>
@@ -90,13 +90,14 @@ async function identity(){
   try{
     const me=await api('GET','/me');role=me.role;
     if(role==='admin')sessionStorage.setItem('tours-admin-init-data',initData);else sessionStorage.removeItem('tours-admin-init-data');
-    $('create').hidden=!(role==='admin'||role==='editor');$('join').hidden=!(role==='viewer'||role==='pending');$('admin-link').hidden=role!=='admin';
-    if(role==='pending'){$('join-button').hidden=true;$('join-state').textContent='Заявка ожидает решения администратора.'}
-    if(role==='viewer'&&!me.username)$('join-state').textContent='Для заявки сначала укажите @username в профиле Telegram.';
+    $('create').hidden=false;$('join').hidden=!(role==='viewer'||role==='pending');$('admin-link').hidden=role!=='admin';
+    $('save-default').hidden=!(role==='admin'||role==='editor');
+    if(role==='pending'){$('join-button').hidden=true;$('join-state').textContent='Заявка на редактирование ожидает решения администратора.'}
+    if(role==='viewer'&&!me.username)$('join-state').textContent='Для заявки на редактирование сначала укажите @username в профиле Telegram.';
     await load();
   }catch(err){message(err.message,'error')}
 }
-$('join-button').addEventListener('click',async e=>{e.currentTarget.disabled=true;try{await api('POST','/join',{});$('join-button').hidden=true;$('join-state').textContent='Заявка отправлена. Попросите администратора одобрить её.'}catch(err){message(err.message,'error');e.currentTarget.disabled=false}});
+$('join-button').addEventListener('click',async e=>{e.currentTarget.disabled=true;try{await api('POST','/join',{});$('join-button').hidden=true;$('join-state').textContent='Заявка на редактирование отправлена. Попросите администратора одобрить её.'}catch(err){message(err.message,'error');e.currentTarget.disabled=false}});
 $('save-default').addEventListener('click',async e=>{e.currentTarget.disabled=true;try{await saveDefault($('new-match').elements.tournament.value);message('Название турнира сохранено по умолчанию.','success')}catch(err){message(err.message,'error')}finally{e.currentTarget.disabled=false}});
 $('new-match').addEventListener('submit',async e=>{
   e.preventDefault();const form=e.currentTarget,btn=form.querySelector('button[type="submit"]');btn.disabled=true;
@@ -106,8 +107,10 @@ $('new-match').addEventListener('submit',async e=>{
     const tournament=form.elements.tournament.value.trim();const sets=parseScore(form.elements.score.value);
     await api('POST','/matches',{teamA,teamB,sets,tournament,playedAt:toIso(form.elements.playedAt.value)});
     form.elements.a.value='';form.elements.b.value='';form.elements.score.value='';form.elements.playedAt.value=mskInput();
-    try{await saveDefault(tournament);message('Игра добавлена.','success')}
-    catch(err){message(`Игра добавлена, но название по умолчанию не обновилось: ${err.message}`,'error')}
+    if(role==='admin'||role==='editor'){
+      try{await saveDefault(tournament);message('Игра добавлена.','success')}
+      catch(err){message(`Игра добавлена, но название по умолчанию не обновилось: ${err.message}`,'error')}
+    }else message('Игра добавлена.','success');
     await load();
   }catch(err){message(err.message,'error')}finally{btn.disabled=false}
 });
