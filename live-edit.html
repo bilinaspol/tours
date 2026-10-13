@@ -15,6 +15,13 @@
 <main>
 <p id="status" role="status" class="muted">Загрузка…</p>
 <section id="login-box"><p>Войти через Telegram может только администратор Pickleball Pro or trusted Telegram users, who's id admin allowed</p><div id="telegram-login"><script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="pickleball_pro_bot" data-size="large" data-userpic="false" data-onauth="onTelegramAuth(user)"></script></div><p id="login-help" class="muted">Если кнопка входа не появилась, проверьте доступ к telegram.org и настройку домена бота.</p></section>
+<section id="create" hidden><h2>Добавить игру</h2>
+<form id="new-match" class="editor">
+<div class="fields"><label>Команда А (каждый игрок с новой строки)<textarea name="a" required></textarea></label><label>Команда Б (каждый игрок с новой строки)<textarea name="b" required></textarea></label></div>
+<div class="fields"><label>Счёт (например, 11:9, 11:7; можно оставить пустым)<input name="score" inputmode="text" placeholder="11:9, 11:7"></label><label>Дата и время игры (МСК)<input name="playedAt" type="datetime-local" required></label></div>
+<label>Турнир<input name="tournament" maxlength="100" required></label>
+<div class="controls"><button type="submit">Добавить игру</button></div>
+</form></section>
 <section id="list"><h2>Игры</h2><div id="matches"></div></section>
 </main>
 <script>
@@ -27,7 +34,8 @@ function clearSession(){
   session=null;expiresAt=0;clearTimeout(expiryTimer);
   try{sessionStorage.removeItem(SESSION_KEY)}catch{}
   $('login-box').hidden=false;
-  document.querySelectorAll('.edit-button,.editor').forEach(el=>el.remove());
+  $('create').hidden=true;
+  document.querySelectorAll('.edit-button,.match .editor').forEach(el=>el.remove());
 }
 function scheduleExpiry(){
   clearTimeout(expiryTimer);
@@ -40,7 +48,7 @@ function setSession(value){
   if(typeof value?.session!=='string'||!value.session||!Number.isSafeInteger(value.expiresAt)||value.expiresAt<=Date.now())throw Error('Вход через Telegram не завершён.');
   session=value.session;expiresAt=value.expiresAt;
   try{sessionStorage.setItem(SESSION_KEY,JSON.stringify({session,expiresAt}))}catch{}
-  $('login-box').hidden=true;scheduleExpiry();
+  $('login-box').hidden=true;$('create').hidden=false;scheduleExpiry();
 }
 const text=(tag,value,cls)=>{const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el};
 const names=value=>value.split('\n').map(s=>s.trim()).filter(Boolean);
@@ -50,6 +58,23 @@ const mskInput=date=>new Date(date.getTime()+3*3600*1000).toISOString().slice(0,
 function toIso(value){if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(value))throw Error('Проверьте дату и время (МСК).');const d=new Date(value+':00+03:00');if(Number.isNaN(d.getTime())||mskInput(d)!==value)throw Error('Проверьте дату и время (МСК).');return d.toISOString()}
 function shortDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return 'Дата не указана';return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Moscow'}).format(d).replace(',','')}
 function notify(value,cls='muted'){$('status').textContent=value;$('status').className=cls}
+const newMatch=$('new-match');
+newMatch.elements.playedAt.value=mskInput(new Date());
+api('GET','/config').then(config=>{if(!newMatch.elements.tournament.value)newMatch.elements.tournament.value=config.defaultTournament}).catch(()=>{});
+newMatch.addEventListener('submit',async e=>{
+  e.preventDefault();const button=newMatch.querySelector('button[type="submit"]');button.disabled=true;
+  try{
+    if(!session||expiresAt<=Date.now())throw Error('Войдите через Telegram снова.');
+    const teamA=names(newMatch.elements.a.value),teamB=names(newMatch.elements.b.value);
+    if(!teamA.length||teamA.length>2||!teamB.length||teamB.length>2)throw Error('Укажите 1–2 игроков в каждой команде.');
+    const payload={teamA,teamB,sets:parseScore(newMatch.elements.score.value),tournament:newMatch.elements.tournament.value.trim(),playedAt:toIso(newMatch.elements.playedAt.value)};
+    if(!payload.tournament)throw Error('Укажите название турнира.');
+    const created=await api('POST','/matches',payload,true);
+    newMatch.elements.a.value='';newMatch.elements.b.value='';newMatch.elements.score.value='';newMatch.elements.playedAt.value=mskInput(new Date());
+    notify('Игра добавлена.','success');
+    try{await load()}catch{notify(`Игра ${created.id} добавлена, но список не обновился. Проверьте его перед повторной отправкой.`,'error')}
+  }catch(err){notify(err.message,'error')}finally{button.disabled=false}
+});
 function readableError(data,status){return {stale_revision:'Игра изменилась после открытия формы. Обновите страницу и повторите правку.',admin_required:'Вход администратора необходим.',invalid_login:'Не удалось подтвердить вход. Если уже входили в другой вкладке, попробуйте через несколько минут.',telegram_required:'Сессия закончилась. Войдите снова.',invalid_team:'Проверьте составы: 1–2 игрока в каждой команде.',invalid_score:'Проверьте счёт.',invalid_played_at:'Проверьте дату.',invalid_tournament:'Проверьте название турнира.',revision_required:'Устаревшая версия игры.'}[data?.error]||`Ошибка сервера (${status}).`}
 async function api(method,path,body,authorized=false){
   const r=await fetch(API+path,{method,cache:'no-store',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(authorized&&session?{'X-Tours-Admin-Session':session}:{})},body:body===undefined?undefined:JSON.stringify(body)});
