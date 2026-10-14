@@ -1,0 +1,6476 @@
+{
+  "metadata": {
+    "schema": "bilinaspol.model-input.v1",
+    "generated_at_utc": "2026-10-14T16:43:57.946321+00:00",
+    "source_url": "https://tours.multirate.cc/api/matches",
+    "registry_url": "https://bilinaspol.github.io/tours/live.html",
+    "numbering": "Ascending original created event timestamp, then source_id. Not playedAt order.",
+    "range": {
+      "first": 6,
+      "last": 107,
+      "excluded_numbers": []
+    },
+    "match_count": 102,
+    "set_count": 182,
+    "player_count": 51,
+    "match_types": {
+      "doubles": 97,
+      "singles": 5
+    },
+    "counts_by_played_date_moscow": {
+      "2026-10-08": 24,
+      "2026-10-09": 28,
+      "2026-10-10": 39,
+      "2026-10-11": 9,
+      "2026-10-12": 2
+    },
+    "source_all_match_count": 116,
+    "scope_note": "ALL requested registry matches included, including 40 and 59; no DUPR-import splits or exclusions applied.",
+    "ratings_and_roles_note": "Public API has no per-match anchor/candidate roles, frozen anchor ratings, scoring format or official V4 grouping. Null is missing evidence, never 0. Event PRO/AM text alone is not a verified per-match role.",
+    "review_note": "Scores and rosters are copied from the registry without guessed corrections. Quality flags request confirmation; flagged matches are not silently discarded. Five singles require separate treatment under a doubles-pair V4.",
+    "model_implementation_included": false
+  },
+  "data_quality_issues": [
+    {
+      "code": "score96_review",
+      "games": [
+        96
+      ],
+      "status": "requires_confirmation",
+      "description": "В реестре второй сет 21:2. Это необычно для заявленного формата до 11, но само по себе не доказывает ошибку: игры до 21 возможны, формат не хранится. Поздний Telegram-реестр тоже содержит 21:2. Не заменять на 2:11 или 11:2 без подтверждения.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/183"
+      ]
+    },
+    {
+      "code": "date106_conflict",
+      "games": [
+        106
+      ],
+      "status": "confirmed_metadata_conflict",
+      "description": "playedAt соответствует 12 октября 17:07 МСК, название события содержит 11 Oct; Telegram относит встречу к 11 октября. Нужна подтверждённая фактическая дата; текущая сохранена.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/184"
+      ]
+    },
+    {
+      "code": "roster_score85_conflict",
+      "games": [
+        85
+      ],
+      "status": "confirmed_source_conflict",
+      "description": "API и поздний нумерованный пост: Тетерин/Кемаев против Каштаньер/Огурцовой, 9:11. Ранние посты: 9:11 против Демченко/Огурцовой и 5:11 против Каштаньер/Огурцовой. Неясно, нужны исправление и/или добавление отдельной встречи.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/151",
+        "https://t.me/PickleballTeamRussia/152",
+        "https://t.me/PickleballTeamRussia/183"
+      ]
+    },
+    {
+      "code": "roster71_conflict",
+      "games": [
+        71
+      ],
+      "status": "confirmed_source_conflict",
+      "description": "API и поздний нумерованный пост: Михаил Поляков/Нуртуре Коссунов. Ранний пост: Семенов/Нурторе при том же счёте 11:5,9:11. Личность первого игрока требует подтверждения, не заменять автоматически.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/138",
+        "https://t.me/PickleballTeamRussia/182"
+      ]
+    },
+    {
+      "code": "score91_claim",
+      "games": [
+        91
+      ],
+      "status": "screenshot_claim_not_independently_confirmed",
+      "description": "На присланном скриншоте Claude сообщает о версии последнего сета 11:2. Текущий API и доступный нумерованный Telegram-пост одинаково содержат 1:11. Другой исходник для 11:2 не установлен; текущий счёт сохранён.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/183"
+      ]
+    },
+    {
+      "code": "score97_conflict",
+      "games": [
+        97
+      ],
+      "status": "confirmed_source_conflict",
+      "description": "Дополнительно обнаружено: API содержит 3:11,8:11 для Хо Сон/Бао против Ромашова/Иванова; нумерованный Telegram-пост содержит 2:11,10:12,11:3 при тех же составах. Требуется сверка с протоколом/участниками.",
+      "sources": [
+        "https://t.me/PickleballTeamRussia/184"
+      ]
+    }
+  ],
+  "players": [
+    {
+      "dupr_id": "2PD5R7",
+      "names_in_registry": [
+        "Илья Кукушин"
+      ]
+    },
+    {
+      "dupr_id": "2PMWNR",
+      "names_in_registry": [
+        "София Шаронова"
+      ]
+    },
+    {
+      "dupr_id": "2QK2RE",
+      "names_in_registry": [
+        "Владислав Демченко"
+      ]
+    },
+    {
+      "dupr_id": "2Z9X97",
+      "names_in_registry": [
+        "Валерий Петрук"
+      ]
+    },
+    {
+      "dupr_id": "2ZMM74",
+      "names_in_registry": [
+        "Валерия Чекунова"
+      ]
+    },
+    {
+      "dupr_id": "4PK4GM",
+      "names_in_registry": [
+        "Карина Каштаньер"
+      ]
+    },
+    {
+      "dupr_id": "6PEQKE",
+      "names_in_registry": [
+        "Нуртуре Коссунов"
+      ]
+    },
+    {
+      "dupr_id": "6R6WN0",
+      "names_in_registry": [
+        "Ипатов Алексей"
+      ]
+    },
+    {
+      "dupr_id": "76VKYN",
+      "names_in_registry": [
+        "Антон Ермаков"
+      ]
+    },
+    {
+      "dupr_id": "7KWONM",
+      "names_in_registry": [
+        "Алексей Николаев"
+      ]
+    },
+    {
+      "dupr_id": "7MJDJN",
+      "names_in_registry": [
+        "Максим Маслов"
+      ]
+    },
+    {
+      "dupr_id": "7MZPQ5",
+      "names_in_registry": [
+        "Кожухова Валерия"
+      ]
+    },
+    {
+      "dupr_id": "7ZYJ70",
+      "names_in_registry": [
+        "Андрей Давидчик"
+      ]
+    },
+    {
+      "dupr_id": "906EZK",
+      "names_in_registry": [
+        "Литвиненко Валентина"
+      ]
+    },
+    {
+      "dupr_id": "D5DJJL",
+      "names_in_registry": [
+        "Арсений Тарасов"
+      ]
+    },
+    {
+      "dupr_id": "DPLKMX",
+      "names_in_registry": [
+        "Ксения Ануфриева"
+      ]
+    },
+    {
+      "dupr_id": "EP0YVV",
+      "names_in_registry": [
+        "Ярослав Простаков"
+      ]
+    },
+    {
+      "dupr_id": "G7Q22Q",
+      "names_in_registry": [
+        "Матвей Кемаев"
+      ]
+    },
+    {
+      "dupr_id": "GP7NLQ",
+      "names_in_registry": [
+        "Антон Шишков"
+      ]
+    },
+    {
+      "dupr_id": "JP9WWD",
+      "names_in_registry": [
+        "Хо Сон"
+      ]
+    },
+    {
+      "dupr_id": "JYQYMW",
+      "names_in_registry": [
+        "Пекич Елена"
+      ]
+    },
+    {
+      "dupr_id": "KXP2N6",
+      "names_in_registry": [
+        "Максим Мальцев"
+      ]
+    },
+    {
+      "dupr_id": "KZY0V6",
+      "names_in_registry": [
+        "Олег Тетерин"
+      ]
+    },
+    {
+      "dupr_id": "LZM065",
+      "names_in_registry": [
+        "Каролина Крутова"
+      ]
+    },
+    {
+      "dupr_id": "M2D5EV",
+      "names_in_registry": [
+        "Екатерина Огурцова"
+      ]
+    },
+    {
+      "dupr_id": "M2DO2D",
+      "names_in_registry": [
+        "Андрей Суслов"
+      ]
+    },
+    {
+      "dupr_id": "M66JOO",
+      "names_in_registry": [
+        "Халютин Николай"
+      ]
+    },
+    {
+      "dupr_id": "M6ZGJV",
+      "names_in_registry": [
+        "Анна Шишкова"
+      ]
+    },
+    {
+      "dupr_id": "M6ZRND",
+      "names_in_registry": [
+        "Зубова Анастасия"
+      ]
+    },
+    {
+      "dupr_id": "M9N97D",
+      "names_in_registry": [
+        "Артем Глинкин"
+      ]
+    },
+    {
+      "dupr_id": "NRVVP6",
+      "names_in_registry": [
+        "Соколов Сергей"
+      ]
+    },
+    {
+      "dupr_id": "O6GRE2",
+      "names_in_registry": [
+        "Наталья Попова"
+      ]
+    },
+    {
+      "dupr_id": "OJDEXL",
+      "names_in_registry": [
+        "Илья Мухин"
+      ]
+    },
+    {
+      "dupr_id": "PG4GVM",
+      "names_in_registry": [
+        "Жинкин Вадим"
+      ]
+    },
+    {
+      "dupr_id": "PGPXLX",
+      "names_in_registry": [
+        "Иван Репетуев"
+      ]
+    },
+    {
+      "dupr_id": "Q5WOK4",
+      "names_in_registry": [
+        "Лихачев Артем"
+      ]
+    },
+    {
+      "dupr_id": "R4NQ4N",
+      "names_in_registry": [
+        "Александр Ермохин"
+      ]
+    },
+    {
+      "dupr_id": "RDONPE",
+      "names_in_registry": [
+        "Руслана Дорма"
+      ]
+    },
+    {
+      "dupr_id": "RWKEWM",
+      "names_in_registry": [
+        "Евгений Прокопенков"
+      ]
+    },
+    {
+      "dupr_id": "RX57KQ",
+      "names_in_registry": [
+        "Андрей Ромашов"
+      ]
+    },
+    {
+      "dupr_id": "RYO2XE",
+      "names_in_registry": [
+        "Вадим Мальцев"
+      ]
+    },
+    {
+      "dupr_id": "RYX4WM",
+      "names_in_registry": [
+        "Николай Чернышев"
+      ]
+    },
+    {
+      "dupr_id": "V20JL7",
+      "names_in_registry": [
+        "Ксения Безрукова"
+      ]
+    },
+    {
+      "dupr_id": "WMZDKQ",
+      "names_in_registry": [
+        "Михаил Поляков"
+      ]
+    },
+    {
+      "dupr_id": "X2YW5X",
+      "names_in_registry": [
+        "Руслан Нурматов"
+      ]
+    },
+    {
+      "dupr_id": "XW0MD2",
+      "names_in_registry": [
+        "Денис Тимошевский"
+      ]
+    },
+    {
+      "dupr_id": "XW5EY2",
+      "names_in_registry": [
+        "Котельникова Александра"
+      ]
+    },
+    {
+      "dupr_id": "Y5R7WP",
+      "names_in_registry": [
+        "Андрей Тетерин"
+      ]
+    },
+    {
+      "dupr_id": "YM2REG",
+      "names_in_registry": [
+        "Николай Иванов"
+      ]
+    },
+    {
+      "dupr_id": "YN0KOG",
+      "names_in_registry": [
+        "Бао Нгуен"
+      ]
+    },
+    {
+      "dupr_id": "ZW4XMW",
+      "names_in_registry": [
+        "Корболин Сергей"
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "registry_number": 6,
+      "source_id": "match_128fdfb53c4546b64dc46a87",
+      "source_revision": "3-6090425e55cc5ab823568202679c4fd9",
+      "source_created_at": "2026-10-08T07:59:12.121Z",
+      "played_at_utc": "2026-10-08T07:57:00.000Z",
+      "played_at_moscow": "2026-10-08T10:57:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов  YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Николай Иванов  YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 7
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 7,
+      "source_id": "match_eaa7dd7bd68ffc482151a479",
+      "source_revision": "3-8eaff5eaa6d5f8ad30cfdd80816e8be5",
+      "source_created_at": "2026-10-08T08:31:31.131Z",
+      "played_at_utc": "2026-10-08T08:29:00.000Z",
+      "played_at_moscow": "2026-10-08T11:29:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ярослав Простаков",
+          "dupr_id": "EP0YVV",
+          "source_text": "Ярослав Простаков EP0YVV"
+        },
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин  Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ярослав Простаков EP0YVV",
+          "Ксения Ануфриева DPLKMX"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Андрей Тетерин  Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 8,
+      "source_id": "match_c6450e8f19af0465c97037f6",
+      "source_revision": "2-bfe008fdaac4ddc56eb662ee381978d4",
+      "source_created_at": "2026-10-09T09:36:09.869Z",
+      "played_at_utc": "2026-10-08T09:34:00.000Z",
+      "played_at_moscow": "2026-10-08T12:34:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Андрей Суслов M2DO2D",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 10,
+          "team_b_points": 12
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 7
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 32,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 9,
+      "source_id": "match_37d0f552755752c64762060a",
+      "source_revision": "2-6d706cfa4df8f15e1c2bd9f0e7ca61b4",
+      "source_created_at": "2026-10-09T09:39:21.109Z",
+      "played_at_utc": "2026-10-08T09:36:00.000Z",
+      "played_at_moscow": "2026-10-08T12:36:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        },
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ксения Ануфриева DPLKMX",
+          "Руслана Дорма RDONPE"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 2
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 5,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 10,
+      "source_id": "match_be6216e23d5c6bfe9db1646f",
+      "source_revision": "3-66bfa64883f6b20bb4a44775d7404747",
+      "source_created_at": "2026-10-09T09:41:14.415Z",
+      "played_at_utc": "2026-10-08T09:39:00.000Z",
+      "played_at_moscow": "2026-10-08T12:39:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслана Дорма RDONPE",
+          "Николай Иванов YM2REG"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Нуртуре Коссунов 6PEQKE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 11,
+      "source_id": "match_fc783c88d214e46232bee88f",
+      "source_revision": "3-40b48aa692ee64863f341c039336b29c",
+      "source_created_at": "2026-10-09T09:51:21.407Z",
+      "played_at_utc": "2026-10-08T09:41:00.000Z",
+      "played_at_moscow": "2026-10-08T12:41:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслана Дорма RDONPE",
+          "Николай Иванов YM2REG"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Нуртуре Коссунов 6PEQKE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 4,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 12,
+      "source_id": "match_811f36341cb48845b5f15769",
+      "source_revision": "2-56d90313e86dcf3cb02731c5d2b32767",
+      "source_created_at": "2026-10-09T09:52:41.422Z",
+      "played_at_utc": "2026-10-08T09:51:00.000Z",
+      "played_at_moscow": "2026-10-08T12:51:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        },
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Ксения Ануфриева DPLKMX",
+          "Руслана Дорма RDONPE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 13,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 24,
+      "team_b_points_total": 15,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 13,
+      "source_id": "match_db1d521368cde87b9d53dfed",
+      "source_revision": "2-7b44d91ae038f6ef2ff746c5d93bb426",
+      "source_created_at": "2026-10-09T09:54:59.073Z",
+      "played_at_utc": "2026-10-08T09:52:00.000Z",
+      "played_at_moscow": "2026-10-08T12:52:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Ярослав Простаков",
+          "dupr_id": "EP0YVV",
+          "source_text": "Ярослав Простаков EP0YVV"
+        },
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Ярослав Простаков EP0YVV",
+          "Ксения Ануфриева DPLKMX"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 8,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 8,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 14,
+      "source_id": "match_d63db1252b47cf4302f466c8",
+      "source_revision": "4-85a53ab6da36daf3a86034d296d81677",
+      "source_created_at": "2026-10-09T09:57:35.192Z",
+      "played_at_utc": "2026-10-08T09:54:00.000Z",
+      "played_at_moscow": "2026-10-08T12:54:00+03:00",
+      "event": "Euro Open Team 8 Oct - Amateurs",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Иван Репетуев",
+          "dupr_id": "PGPXLX",
+          "source_text": "Иван Репетуев  PGPXLX"
+        },
+        {
+          "name": "Денис Тимошевский",
+          "dupr_id": "XW0MD2",
+          "source_text": "Денис Тимошевский XW0MD2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Тетерин Y5R7WP",
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Иван Репетуев  PGPXLX",
+          "Денис Тимошевский XW0MD2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 2
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 4,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 15,
+      "source_id": "match_e5ad2a38d41de16e5f52076d",
+      "source_revision": "5-bb2da0439942c8a928b262587e2b56ad",
+      "source_created_at": "2026-10-09T10:00:40.359Z",
+      "played_at_utc": "2026-10-08T09:57:00.000Z",
+      "played_at_moscow": "2026-10-08T12:57:00+03:00",
+      "event": "Euro Open Team 8 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Иван Репетуев",
+          "dupr_id": "PGPXLX",
+          "source_text": "Иван Репетуев  PGPXLX"
+        },
+        {
+          "name": "Денис Тимошевский",
+          "dupr_id": "XW0MD2",
+          "source_text": "Денис Тимошевский XW0MD2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Каролина Крутова LZM065",
+          "Максим Маслов 7MJDJN"
+        ],
+        "teamB": [
+          "Иван Репетуев  PGPXLX",
+          "Денис Тимошевский XW0MD2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 2,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 7,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 4,
+          "team_a_points": 10,
+          "team_b_points": 12
+        }
+      ],
+      "team_a_points_total": 30,
+      "team_b_points_total": 38,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 16,
+      "source_id": "match_47c80e4ebbd738bfd4613228",
+      "source_revision": "2-f13c2ee0868669bf5782c7c50a161f07",
+      "source_created_at": "2026-10-09T10:03:58.171Z",
+      "played_at_utc": "2026-10-08T10:00:00.000Z",
+      "played_at_moscow": "2026-10-08T13:00:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Валерий Петрук 2Z9X97"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 1
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 9
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 33,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 17,
+      "source_id": "match_413bfac95d54e838c60c1b92",
+      "source_revision": "4-44c93acfde8c8dbea3822863f9b30b51",
+      "source_created_at": "2026-10-09T10:06:37.639Z",
+      "played_at_utc": "2026-10-08T10:03:00.000Z",
+      "played_at_moscow": "2026-10-08T13:03:00+03:00",
+      "event": "Euro Open Team 8 Oct - Amateurs",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Иван Репетуев",
+          "dupr_id": "PGPXLX",
+          "source_text": "Иван Репетуев  PGPXLX"
+        },
+        {
+          "name": "Денис Тимошевский",
+          "dupr_id": "XW0MD2",
+          "source_text": "Денис Тимошевский XW0MD2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Максим Маслов 7MJDJN"
+        ],
+        "teamB": [
+          "Иван Репетуев  PGPXLX",
+          "Денис Тимошевский XW0MD2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 10,
+          "team_b_points": 12
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 32,
+      "team_b_points_total": 21,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 18,
+      "source_id": "match_db1bc9dfa51e6d2c39bed7fd",
+      "source_revision": "2-f525dadba314f09715a6b3e53b6850e4",
+      "source_created_at": "2026-10-09T10:09:24.468Z",
+      "played_at_utc": "2026-10-08T10:06:00.000Z",
+      "played_at_moscow": "2026-10-08T13:06:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Ярослав Простаков",
+          "dupr_id": "EP0YVV",
+          "source_text": "Ярослав Простаков EP0YVV"
+        },
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Суслов M2DO2D",
+          "Руслана Дорма RDONPE"
+        ],
+        "teamB": [
+          "Ярослав Простаков EP0YVV",
+          "Ксения Ануфриева DPLKMX"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 4,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 15,
+      "team_b_points_total": 13,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 19,
+      "source_id": "match_48125e3f6184203cf650323f",
+      "source_revision": "5-d419e738e402e6186b13ee8090d47b26",
+      "source_created_at": "2026-10-09T10:11:18.771Z",
+      "played_at_utc": "2026-10-08T10:09:00.000Z",
+      "played_at_moscow": "2026-10-08T13:09:00+03:00",
+      "event": "Euro Open Team 8 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Иван Репетуев",
+          "dupr_id": "PGPXLX",
+          "source_text": "Иван Репетуев PGPXLX"
+        },
+        {
+          "name": "Денис Тимошевский",
+          "dupr_id": "XW0MD2",
+          "source_text": "Денис Тимошевский XW0MD2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Мухин OJDEXL",
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Иван Репетуев PGPXLX",
+          "Денис Тимошевский XW0MD2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 0
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 5,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 20,
+      "source_id": "match_7c5540629e3107a2d49bbdf0",
+      "source_revision": "2-161bf78c13de2086f5696477afc2bf6a",
+      "source_created_at": "2026-10-09T10:12:42.978Z",
+      "played_at_utc": "2026-10-08T10:11:00.000Z",
+      "played_at_moscow": "2026-10-08T13:11:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 21,
+      "source_id": "match_15f62082f957b393857f77fd",
+      "source_revision": "3-f158b773524b4b2cdd9cad1375972b53",
+      "source_created_at": "2026-10-09T10:15:05.370Z",
+      "played_at_utc": "2026-10-08T10:12:00.000Z",
+      "played_at_moscow": "2026-10-08T13:12:00+03:00",
+      "event": "Euro Open Team 8 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Ярослав Простаков",
+          "dupr_id": "EP0YVV",
+          "source_text": "Ярослав Простаков EP0YVV"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        },
+        {
+          "name": "Ксения Ануфриева",
+          "dupr_id": "DPLKMX",
+          "source_text": "Ксения Ануфриева DPLKMX"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Суслов M2DO2D",
+          "Ярослав Простаков EP0YVV"
+        ],
+        "teamB": [
+          "Руслана Дорма RDONPE",
+          "Ксения Ануфриева DPLKMX"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 22,
+      "source_id": "match_7889cda3e80b7ef40f6dcc49",
+      "source_revision": "3-78cf4c2a6e1f9b9c25b4eaed177f8e9a",
+      "source_created_at": "2026-10-09T10:16:02.582Z",
+      "played_at_utc": "2026-10-08T10:15:00.000Z",
+      "played_at_moscow": "2026-10-08T13:15:00+03:00",
+      "event": "Euro Open Team 8 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Максим Маслов 7MJDJN"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 0
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 0,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 23,
+      "source_id": "match_f6e6f9b73f83f42af48aaba1",
+      "source_revision": "5-13cabc26333841e5dd99c4127a48560b",
+      "source_created_at": "2026-10-09T10:18:35.500Z",
+      "played_at_utc": "2026-10-08T10:16:00.000Z",
+      "played_at_moscow": "2026-10-08T13:16:00+03:00",
+      "event": "Euro Open Team 8 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Вадим Мальцев RYO2XE",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Нуртуре Коссунов 6PEQKE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 6,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 8
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 6,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 23,
+      "team_b_points_total": 30,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 24,
+      "source_id": "match_c8807ed8c6c2a4fdb641654f",
+      "source_revision": "3-af8903f85893fda18fc43e2d30473368",
+      "source_created_at": "2026-10-09T10:20:21.685Z",
+      "played_at_utc": "2026-10-08T10:18:00.000Z",
+      "played_at_moscow": "2026-10-08T13:18:00+03:00",
+      "event": "Euro Open Team 8 Oct - AM-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Руслана Дорма",
+          "dupr_id": "RDONPE",
+          "source_text": "Руслана Дорма RDONPE"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Ромашов RX57KQ",
+          "Илья Мухин OJDEXL"
+        ],
+        "teamB": [
+          "Руслана Дорма RDONPE",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 25,
+      "source_id": "match_86ab6d7603b66568b97833e8",
+      "source_revision": "4-853b95b2fa55beacff9fe9137d2300d7",
+      "source_created_at": "2026-10-09T11:59:51.378Z",
+      "played_at_utc": "2026-10-08T11:49:00.000Z",
+      "played_at_moscow": "2026-10-08T14:49:00+03:00",
+      "event": "Euro Open Team 8 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Вадим Мальцев RYO2XE",
+          "Андрей Тетерин Y5R7WP"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 6,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 1,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 7,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 26,
+      "source_id": "match_63b04a4a20fe0bcc9549f763",
+      "source_revision": "3-8d0749ebd3d32057ec9a82a618c0ab9c",
+      "source_created_at": "2026-10-09T12:03:21.495Z",
+      "played_at_utc": "2026-10-08T11:59:00.000Z",
+      "played_at_moscow": "2026-10-08T14:59:00+03:00",
+      "event": "Euro Open Team 8 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 8,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 5,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 13,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 27,
+      "source_id": "match_9fc3e895b16ab53297b12584",
+      "source_revision": "2-0ff6d289950f293489324ffd3b9746fd",
+      "source_created_at": "2026-10-09T12:05:18.955Z",
+      "played_at_utc": "2026-10-08T12:03:00.000Z",
+      "played_at_moscow": "2026-10-08T15:03:00+03:00",
+      "event": "Euro Open Team 8 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Максим Маслов 7MJDJN"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 6,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 18,
+      "team_b_points_total": 21,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 28,
+      "source_id": "match_733f243caa21e28af6d6f1a5",
+      "source_revision": "2-11db539f99231789c2099acdbf5052ac",
+      "source_created_at": "2026-10-09T12:09:00.993Z",
+      "played_at_utc": "2026-10-08T12:05:00.000Z",
+      "played_at_moscow": "2026-10-08T15:05:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Мухин OJDEXL",
+          "Валерий Петрук 2Z9X97"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Каролина Крутова LZM065"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 29,
+      "source_id": "match_1298afb498d21523bccb9e9e",
+      "source_revision": "2-26fbdb34282094611e6ca5729fd479e8",
+      "source_created_at": "2026-10-09T12:16:19.913Z",
+      "played_at_utc": "2026-10-08T12:09:00.000Z",
+      "played_at_moscow": "2026-10-08T15:09:00+03:00",
+      "event": "Euro Open Team 8 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Чернышев",
+          "dupr_id": "RYX4WM",
+          "source_text": "Николай Чернышев RYX4WM"
+        },
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Михаил Поляков",
+          "dupr_id": "WMZDKQ",
+          "source_text": "Михаил Поляков WMZDKQ"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Чернышев RYX4WM",
+          "Валерий Петрук 2Z9X97"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Михаил Поляков WMZDKQ"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 9
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 3,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 25,
+      "team_b_points_total": 24,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 30,
+      "source_id": "match_a09168a5a4591efc3eca0871",
+      "source_revision": "4-ee9aef944aae8e1eeb89de775615dba8",
+      "source_created_at": "2026-10-09T12:22:11.398Z",
+      "played_at_utc": "2026-10-09T12:16:00.000Z",
+      "played_at_moscow": "2026-10-09T15:16:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Иванов YM2REG",
+          "Илья Кукушин 2PD5R7"
+        ],
+        "teamB": [
+          "Карина Каштаньер 4PK4GM",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 0
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 0,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 31,
+      "source_id": "match_5ed0986d25692663e5b4bc84",
+      "source_revision": "4-d71f64bfe244ff0180685cf70c744038",
+      "source_created_at": "2026-10-09T12:25:04.470Z",
+      "played_at_utc": "2026-10-09T12:22:00.000Z",
+      "played_at_moscow": "2026-10-09T15:22:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7",
+          "Карина Каштаньер 4PK4GM"
+        ],
+        "teamB": [
+          "Николай Иванов YM2REG",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 1
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 1,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 32,
+      "source_id": "match_23dc9068093b967e71d6091d",
+      "source_revision": "4-db02e22e8c57964a0f0fa81cc2c5627a",
+      "source_created_at": "2026-10-09T12:27:19.113Z",
+      "played_at_utc": "2026-10-09T12:25:00.000Z",
+      "played_at_moscow": "2026-10-09T15:25:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Иванов YM2REG",
+          "Карина Каштаньер 4PK4GM"
+        ],
+        "teamB": [
+          "Илья Кукушин 2PD5R7",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 9,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 9,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 33,
+      "source_id": "match_343eb034675e80d28921b704",
+      "source_revision": "2-404fa19dd371bac02f73d3db6b5b6677",
+      "source_created_at": "2026-10-09T12:30:46.539Z",
+      "played_at_utc": "2026-10-09T12:27:00.000Z",
+      "played_at_moscow": "2026-10-09T15:27:00+03:00",
+      "event": "Euro Open Team 9 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Алексей Николаев",
+          "dupr_id": "7KWONM",
+          "source_text": "Алексей Николаев 7KWONM"
+        },
+        {
+          "name": "Антон Ермаков",
+          "dupr_id": "76VKYN",
+          "source_text": "Антон Ермаков  76VKYN"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Михаил Поляков",
+          "dupr_id": "WMZDKQ",
+          "source_text": "Михаил Поляков WMZDKQ"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Алексей Николаев 7KWONM",
+          "Антон Ермаков  76VKYN"
+        ],
+        "teamB": [
+          "Михаил Поляков WMZDKQ",
+          "Максим Маслов 7MJDJN"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 34,
+      "source_id": "match_5f8ce1234d34d8ba7d5f03bb",
+      "source_revision": "3-ce8ca524c7804bbf582eff4067720657",
+      "source_created_at": "2026-10-09T12:32:44.792Z",
+      "played_at_utc": "2026-10-09T12:30:00.000Z",
+      "played_at_moscow": "2026-10-09T15:30:00+03:00",
+      "event": "Euro Open Team 9 Oct - AM-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Алексей Николаев",
+          "dupr_id": "7KWONM",
+          "source_text": "Алексей Николаев 7KWONM"
+        },
+        {
+          "name": "Александр Ермохин",
+          "dupr_id": "R4NQ4N",
+          "source_text": "Александр Ермохин R4NQ4N"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Антон Ермаков",
+          "dupr_id": "76VKYN",
+          "source_text": "Антон Ермаков 76VKYN"
+        },
+        {
+          "name": "Максим Маслов",
+          "dupr_id": "7MJDJN",
+          "source_text": "Максим Маслов 7MJDJN"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Алексей Николаев 7KWONM",
+          "Александр Ермохин R4NQ4N"
+        ],
+        "teamB": [
+          "Антон Ермаков 76VKYN",
+          "Максим Маслов 7MJDJN"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 33,
+      "team_b_points_total": 18,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 35,
+      "source_id": "match_c655f6697085f970022e364d",
+      "source_revision": "4-cb529537571cba1c489dc9648f85c9e4",
+      "source_created_at": "2026-10-09T12:34:35.391Z",
+      "played_at_utc": "2026-10-09T12:32:00.000Z",
+      "played_at_moscow": "2026-10-09T15:32:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Суслов M2DO2D",
+          "Кожухова Валерия 7MZPQ5"
+        ],
+        "teamB": [
+          "Илья Кукушин 2PD5R7",
+          "Карина Каштаньер 4PK4GM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 3,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 5,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 8,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 36,
+      "source_id": "match_4eb8d6e7a69bd9e4028e9f1d",
+      "source_revision": "2-2c02be08c816ad42e522f928cae23b68",
+      "source_created_at": "2026-10-09T13:02:05.323Z",
+      "played_at_utc": "2026-10-09T13:00:00.000Z",
+      "played_at_moscow": "2026-10-09T16:00:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Иванов YM2REG",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Евгений Прокопенков RWKEWM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 10,
+          "team_b_points": 12
+        }
+      ],
+      "team_a_points_total": 10,
+      "team_b_points_total": 12,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 37,
+      "source_id": "match_7950bfe9e63c5d02e37db7ad",
+      "source_revision": "2-b62e0fb6a6259852207b86923aa3fd59",
+      "source_created_at": "2026-10-09T13:08:52.508Z",
+      "played_at_utc": "2026-10-09T13:02:00.000Z",
+      "played_at_moscow": "2026-10-09T16:02:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        },
+        {
+          "name": "Андрей Давидчик",
+          "dupr_id": "7ZYJ70",
+          "source_text": "Андрей Давидчик 7ZYJ70"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Хо Сон JP9WWD",
+          "Андрей Давидчик 7ZYJ70"
+        ],
+        "teamB": [
+          "Николай Иванов YM2REG",
+          "Евгений Прокопенков RWKEWM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 38,
+      "source_id": "match_f87428519da1874129f61be2",
+      "source_revision": "2-ebb923b4d17462c783852e67489c8aca",
+      "source_created_at": "2026-10-09T13:10:48.589Z",
+      "played_at_utc": "2026-10-09T13:08:00.000Z",
+      "played_at_moscow": "2026-10-09T16:08:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Антон Ермаков",
+          "dupr_id": "76VKYN",
+          "source_text": "Антон Ермаков 76VKYN"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Иванов YM2REG",
+          "Антон Ермаков 76VKYN"
+        ],
+        "teamB": [
+          "Илья Кукушин 2PD5R7",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 9,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 9,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 39,
+      "source_id": "match_82a25cdc6f9e36bbb58c534d",
+      "source_revision": "3-419ee0db4665ee30bd08bf411e0a011a",
+      "source_created_at": "2026-10-09T13:16:17.120Z",
+      "played_at_utc": "2026-10-09T13:10:00.000Z",
+      "played_at_moscow": "2026-10-09T16:10:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Антон Ермаков",
+          "dupr_id": "76VKYN",
+          "source_text": "Антон Ермаков 76VKYN"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Карина Каштаньер 4PK4GM",
+          "Кожухова Валерия 7MZPQ5"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Антон Ермаков 76VKYN"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 40,
+      "source_id": "match_0cd69f77af465e5604d10288",
+      "source_revision": "2-1e8aadb1856419158d45356eae2a29bb",
+      "source_created_at": "2026-10-09T13:17:05.814Z",
+      "played_at_utc": "2026-10-09T13:16:00.000Z",
+      "played_at_moscow": "2026-10-09T16:16:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "singles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7"
+        ],
+        "teamB": [
+          "Андрей Суслов M2DO2D"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 5,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 41,
+      "source_id": "match_f049e069e362515c030e8737",
+      "source_revision": "5-759d13dc06003de3e82bb7778f648e21",
+      "source_created_at": "2026-10-09T13:20:43.005Z",
+      "played_at_utc": "2026-10-09T13:17:00.000Z",
+      "played_at_moscow": "2026-10-09T16:17:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Корболин Сергей",
+          "dupr_id": "ZW4XMW",
+          "source_text": "Корболин Сергей ZW4XMW"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Вадим Мальцев RYO2XE",
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Корболин Сергей ZW4XMW"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 6,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 42,
+      "source_id": "match_df1d43cc3347ead15b3c1b80",
+      "source_revision": "2-8d8557a0e702a61f4f5b0dba5e816761",
+      "source_created_at": "2026-10-09T13:24:19.963Z",
+      "played_at_utc": "2026-10-09T13:20:00.000Z",
+      "played_at_moscow": "2026-10-09T16:20:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7",
+          "Хо Сон JP9WWD"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 2
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 3,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 25,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 43,
+      "source_id": "match_12be7aceca1dc291581ed135",
+      "source_revision": "3-664d995facc8c4860cf7c8bafd664633",
+      "source_created_at": "2026-10-09T13:26:38.903Z",
+      "played_at_utc": "2026-10-09T13:24:00.000Z",
+      "played_at_moscow": "2026-10-09T16:24:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Корболин Сергей",
+          "dupr_id": "ZW4XMW",
+          "source_text": "Корболин Сергей ZW4XMW"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Давидчик",
+          "dupr_id": "7ZYJ70",
+          "source_text": "Андрей Давидчик 7ZYJ70"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Корболин Сергей ZW4XMW"
+        ],
+        "teamB": [
+          "Андрей Давидчик 7ZYJ70",
+          "Евгений Прокопенков RWKEWM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 3,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 14,
+      "team_b_points_total": 16,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 44,
+      "source_id": "match_3cc3bdc7435ca6b2ba9341b5",
+      "source_revision": "2-02fb7f028130b6797cf6e9d4d820d986",
+      "source_created_at": "2026-10-09T13:30:35.713Z",
+      "played_at_utc": "2026-10-09T13:26:00.000Z",
+      "played_at_moscow": "2026-10-09T16:26:00+03:00",
+      "event": "Euro Open Team 9 Oct - AM-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Алексей Николаев",
+          "dupr_id": "7KWONM",
+          "source_text": "Алексей Николаев 7KWONM"
+        },
+        {
+          "name": "Александр Ермохин",
+          "dupr_id": "R4NQ4N",
+          "source_text": "Александр Ермохин R4NQ4N"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Алексей Николаев 7KWONM",
+          "Александр Ермохин R4NQ4N"
+        ],
+        "teamB": [
+          "Андрей Суслов M2DO2D",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 2,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 2,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 45,
+      "source_id": "match_f38f9094c1d424f210652e5c",
+      "source_revision": "2-cb01320ae0876cb7d7a9a6d9205a1084",
+      "source_created_at": "2026-10-09T13:31:59.511Z",
+      "played_at_utc": "2026-10-09T13:30:00.000Z",
+      "played_at_moscow": "2026-10-09T16:30:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        },
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Суслов M2DO2D",
+          "Илья Кукушин 2PD5R7"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 46,
+      "source_id": "match_869b97e57e749906da5c6643",
+      "source_revision": "3-33eb8dce8ebdf80ec0fc8fecb2c12122",
+      "source_created_at": "2026-10-09T13:37:53.392Z",
+      "played_at_utc": "2026-10-09T13:31:00.000Z",
+      "played_at_moscow": "2026-10-09T16:31:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Антон Ермаков",
+          "dupr_id": "76VKYN",
+          "source_text": "Антон Ермаков 76VKYN"
+        },
+        {
+          "name": "Михаил Поляков",
+          "dupr_id": "WMZDKQ",
+          "source_text": "Михаил Поляков WMZDKQ"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Корболин Сергей",
+          "dupr_id": "ZW4XMW",
+          "source_text": "Корболин Сергей ZW4XMW"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Антон Ермаков 76VKYN",
+          "Михаил Поляков WMZDKQ"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Корболин Сергей ZW4XMW"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 9,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 20,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 47,
+      "source_id": "match_f53dee2ff8efc025f0fc9fcb",
+      "source_revision": "3-bfd991daad59f85f396baf85ccb0cfb1",
+      "source_created_at": "2026-10-09T13:39:55.217Z",
+      "played_at_utc": "2026-10-09T13:37:00.000Z",
+      "played_at_moscow": "2026-10-09T16:37:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Хо Сон JP9WWD",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 13,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 13,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 48,
+      "source_id": "match_9e59b362617d2a0980d8d6f5",
+      "source_revision": "3-deea2d78b55f5ba3710596f379518fef",
+      "source_created_at": "2026-10-09T13:41:24.798Z",
+      "played_at_utc": "2026-10-09T13:39:00.000Z",
+      "played_at_moscow": "2026-10-09T16:39:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Хо Сон JP9WWD",
+          "Кожухова Валерия 7MZPQ5"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 49,
+      "source_id": "match_ec6c31b68b6949b6a58271f8",
+      "source_revision": "3-846352f0d2301eac805836e5a367a7d6",
+      "source_created_at": "2026-10-09T13:44:58.078Z",
+      "played_at_utc": "2026-10-09T13:41:00.000Z",
+      "played_at_moscow": "2026-10-09T16:41:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Алексей Николаев",
+          "dupr_id": "7KWONM",
+          "source_text": "Алексей Николаев 7KWONM"
+        },
+        {
+          "name": "Александр Ермохин",
+          "dupr_id": "R4NQ4N",
+          "source_text": "Александр Ермохин R4NQ4N"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Карина Каштаньер 4PK4GM",
+          "Кожухова Валерия 7MZPQ5"
+        ],
+        "teamB": [
+          "Алексей Николаев 7KWONM",
+          "Александр Ермохин R4NQ4N"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 4,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 50,
+      "source_id": "match_1f22102b77d133a41ead9449",
+      "source_revision": "2-8bdd2099bb9240965be26fc17aecb600",
+      "source_created_at": "2026-10-09T13:47:36.250Z",
+      "played_at_utc": "2026-10-09T13:44:00.000Z",
+      "played_at_moscow": "2026-10-09T16:44:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7",
+          "Андрей Суслов M2DO2D"
+        ],
+        "teamB": [
+          "Хо Сон JP9WWD",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 1
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 51,
+      "source_id": "match_9dd7d5f7a3812ee5cf318a20",
+      "source_revision": "2-425de901474841f45cc33c4eb547e279",
+      "source_created_at": "2026-10-09T13:49:37.131Z",
+      "played_at_utc": "2026-10-09T13:47:00.000Z",
+      "played_at_moscow": "2026-10-09T16:47:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Алексей Николаев",
+          "dupr_id": "7KWONM",
+          "source_text": "Алексей Николаев 7KWONM"
+        },
+        {
+          "name": "Александр Ермохин",
+          "dupr_id": "R4NQ4N",
+          "source_text": "Александр Ермохин R4NQ4N"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Алексей Николаев 7KWONM",
+          "Александр Ермохин R4NQ4N"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 4,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 52,
+      "source_id": "match_ba22014354c5a652c21c4c25",
+      "source_revision": "2-5730ed5d09f87d00a39531d4783814f5",
+      "source_created_at": "2026-10-09T13:51:33.401Z",
+      "played_at_utc": "2026-10-09T13:49:00.000Z",
+      "played_at_moscow": "2026-10-09T16:49:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон JP9WWD"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Вадим Мальцев RYO2XE",
+          "Николай Иванов YM2REG"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Хо Сон JP9WWD"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 53,
+      "source_id": "match_58bc6ab8c12f875bea85b0ba",
+      "source_revision": "4-4bc1a83bc233415e54d9e8a9af694a6d",
+      "source_created_at": "2026-10-09T13:53:37.768Z",
+      "played_at_utc": "2026-10-09T13:51:00.000Z",
+      "played_at_moscow": "2026-10-09T16:51:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Давидчик",
+          "dupr_id": "7ZYJ70",
+          "source_text": "Андрей Давидчик 7ZYJ70"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Андрей Давидчик 7ZYJ70",
+          "Евгений Прокопенков RWKEWM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 2,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 54,
+      "source_id": "match_e074c30d843aa566aaea747e",
+      "source_revision": "2-7c91946bfa78a259de7081420e5297c5",
+      "source_created_at": "2026-10-09T13:56:26.911Z",
+      "played_at_utc": "2026-10-09T13:53:00.000Z",
+      "played_at_moscow": "2026-10-09T16:53:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Давидчик",
+          "dupr_id": "7ZYJ70",
+          "source_text": "Андрей Давидчик 7ZYJ70"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Николай Иванов YM2REG",
+          "Карина Каштаньер 4PK4GM"
+        ],
+        "teamB": [
+          "Андрей Давидчик 7ZYJ70",
+          "Евгений Прокопенков RWKEWM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 55,
+      "source_id": "match_87687e1bcfbb19d52d16d091",
+      "source_revision": "4-73f273ce51bdc2a69714534ff4cbe1a7",
+      "source_created_at": "2026-10-09T13:58:03.461Z",
+      "played_at_utc": "2026-10-09T13:56:00.000Z",
+      "played_at_moscow": "2026-10-09T16:56:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Корболин Сергей",
+          "dupr_id": "ZW4XMW",
+          "source_text": "Корболин Сергей ZW4XMW"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Каролина Крутова LZM065",
+          "Корболин Сергей ZW4XMW"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 8,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 8,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 56,
+      "source_id": "match_a44931a45886d3e612028e2d",
+      "source_revision": "4-634a645582450264fcdd58dade373b84",
+      "source_created_at": "2026-10-09T13:59:50.600Z",
+      "played_at_utc": "2026-10-09T13:58:00.000Z",
+      "played_at_moscow": "2026-10-09T16:58:00+03:00",
+      "event": "Euro Open Team 9 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Карина Каштаньер 4PK4GM",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 6,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 57,
+      "source_id": "match_8b0d9772940a092692b54569",
+      "source_revision": "3-d851086638e6c5d964a1854b4fb18db7",
+      "source_created_at": "2026-10-09T14:02:50.456Z",
+      "played_at_utc": "2026-10-09T14:01:00.000Z",
+      "played_at_moscow": "2026-10-09T17:01:00+03:00",
+      "event": "Euro Open Team 9 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Давидчик",
+          "dupr_id": "7ZYJ70",
+          "source_text": "Андрей Давидчик 7ZYJ70"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Александр Ермохин",
+          "dupr_id": "R4NQ4N",
+          "source_text": "Александр Ермохин R4NQ4N"
+        },
+        {
+          "name": "Кожухова Валерия",
+          "dupr_id": "7MZPQ5",
+          "source_text": "Кожухова Валерия 7MZPQ5"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Давидчик 7ZYJ70",
+          "Евгений Прокопенков RWKEWM"
+        ],
+        "teamB": [
+          "Александр Ермохин R4NQ4N",
+          "Кожухова Валерия 7MZPQ5"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 58,
+      "source_id": "match_b63c4be629abc4b13f0d85b3",
+      "source_revision": "4-48a44c81dbe6a325977c13d27c1b9333",
+      "source_created_at": "2026-10-12T10:36:00.079Z",
+      "played_at_utc": "2026-10-10T10:31:00.000Z",
+      "played_at_moscow": "2026-10-10T13:31:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        },
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ипатов Алексей 6R6WN0",
+          "Жинкин Вадим PG4GVM"
+        ],
+        "teamB": [
+          "Котельникова Александра XW5EY2",
+          "Зубова Анастасия M6ZRND"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 59,
+      "source_id": "match_ce9704e15011ad37c68519a2",
+      "source_revision": "2-ebdabeabfe1f4f982571f1b15df35412",
+      "source_created_at": "2026-10-12T11:01:13.733Z",
+      "played_at_utc": "2026-10-10T11:00:00.000Z",
+      "played_at_moscow": "2026-10-10T14:00:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Литвиненко Валентина",
+          "dupr_id": "906EZK",
+          "source_text": "Литвиненко Валентина  906EZK"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Ксения Безрукова",
+          "dupr_id": "V20JL7",
+          "source_text": "Ксения Безрукова V20JL7"
+        },
+        {
+          "name": "Пекич Елена",
+          "dupr_id": "JYQYMW",
+          "source_text": "Пекич Елена JYQYMW"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Литвиненко Валентина  906EZK",
+          "Матвей Кемаев G7Q22Q"
+        ],
+        "teamB": [
+          "Ксения Безрукова V20JL7",
+          "Пекич Елена JYQYMW"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 14,
+          "team_b_points": 12
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 25,
+      "team_b_points_total": 17,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 60,
+      "source_id": "match_7c667b5ee276ca8720f744b3",
+      "source_revision": "4-7a891c18d0e2423c691f9151d172f51e",
+      "source_created_at": "2026-10-12T11:02:26.978Z",
+      "played_at_utc": "2026-10-10T11:01:00.000Z",
+      "played_at_moscow": "2026-10-10T14:01:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Лихачев Артем",
+          "dupr_id": "Q5WOK4",
+          "source_text": "Лихачев Артем  Q5WOK4"
+        },
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Соколов Сергей",
+          "dupr_id": "NRVVP6",
+          "source_text": "Соколов Сергей NRVVP6"
+        },
+        {
+          "name": "Халютин Николай",
+          "dupr_id": "M66JOO",
+          "source_text": "Халютин Николай  M66JOO"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Лихачев Артем  Q5WOK4",
+          "Илья Мухин OJDEXL"
+        ],
+        "teamB": [
+          "Соколов Сергей NRVVP6",
+          "Халютин Николай  M66JOO"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 12,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 61,
+      "source_id": "match_5cf67917af0abe36540142d4",
+      "source_revision": "3-36c331f3e2c5171bf681c715c19a1671",
+      "source_created_at": "2026-10-12T11:03:47.851Z",
+      "played_at_utc": "2026-10-10T11:02:00.000Z",
+      "played_at_moscow": "2026-10-10T14:02:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Жинкин Вадим PG4GVM",
+          "Котельникова Александра XW5EY2"
+        ],
+        "teamB": [
+          "Ипатов Алексей 6R6WN0",
+          "Зубова Анастасия M6ZRND"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 62,
+      "source_id": "match_c2d2dc6a5902181e0f92064b",
+      "source_revision": "5-6a187a646ed4dd0dab6665192f69ec18",
+      "source_created_at": "2026-10-12T11:05:04.652Z",
+      "played_at_utc": "2026-10-10T11:03:00.000Z",
+      "played_at_moscow": "2026-10-10T14:03:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев  KXP2N6"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Ромашов RX57KQ",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Максим Мальцев  KXP2N6",
+          "Карина Каштаньер 4PK4GM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 7,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 18,
+      "team_b_points_total": 18,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 63,
+      "source_id": "match_d351f336781ef6c5cd739bae",
+      "source_revision": "3-883894a56dac1edaabb1b7c0ad450b27",
+      "source_created_at": "2026-10-12T11:06:26.820Z",
+      "played_at_utc": "2026-10-10T11:05:00.000Z",
+      "played_at_moscow": "2026-10-10T14:05:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Литвиненко Валентина",
+          "dupr_id": "906EZK",
+          "source_text": "Литвиненко Валентина 906EZK"
+        },
+        {
+          "name": "Пекич Елена",
+          "dupr_id": "JYQYMW",
+          "source_text": "Пекич Елена JYQYMW"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Литвиненко Валентина 906EZK",
+          "Пекич Елена JYQYMW"
+        ],
+        "teamB": [
+          "Зубова Анастасия M6ZRND",
+          "Котельникова Александра XW5EY2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 7,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 29,
+      "team_b_points_total": 17,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 64,
+      "source_id": "match_97a5328540914b86b6e4a2ff",
+      "source_revision": "3-a52b8dbf3dd88d81aab5066d617a00df",
+      "source_created_at": "2026-10-12T11:08:07.006Z",
+      "played_at_utc": "2026-10-10T11:06:00.000Z",
+      "played_at_moscow": "2026-10-10T14:06:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Анна Шишкова",
+          "dupr_id": "M6ZGJV",
+          "source_text": "Анна Шишкова M6ZGJV"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Антон Шишков",
+          "dupr_id": "GP7NLQ",
+          "source_text": "Антон Шишков GP7NLQ"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Анна Шишкова M6ZGJV",
+          "Матвей Кемаев G7Q22Q"
+        ],
+        "teamB": [
+          "Антон Шишков GP7NLQ",
+          "Каролина Крутова LZM065"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 6,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 17,
+      "team_b_points_total": 13,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 65,
+      "source_id": "match_351e29051287a133dc6b0223",
+      "source_revision": "3-6750089a55137f782afa1c93d980a02b",
+      "source_created_at": "2026-10-12T11:09:17.505Z",
+      "played_at_utc": "2026-10-10T11:08:00.000Z",
+      "played_at_moscow": "2026-10-10T14:08:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Анна Шишкова",
+          "dupr_id": "M6ZGJV",
+          "source_text": "Анна Шишкова M6ZGJV"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Антон Шишков",
+          "dupr_id": "GP7NLQ",
+          "source_text": "Антон Шишков GP7NLQ"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Анна Шишкова M6ZGJV",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Антон Шишков GP7NLQ",
+          "Матвей Кемаев G7Q22Q"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 3
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 66,
+      "source_id": "match_ead6c1fe2d4f9ac4d35e67c0",
+      "source_revision": "4-e7fbf1a14a885e1c6063627b7cffbf1f",
+      "source_created_at": "2026-10-12T11:13:07.514Z",
+      "played_at_utc": "2026-10-10T11:09:00.000Z",
+      "played_at_moscow": "2026-10-10T14:09:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Лихачев Артем",
+          "dupr_id": "Q5WOK4",
+          "source_text": "Лихачев Артем Q5WOK4"
+        },
+        {
+          "name": "Соколов Сергей",
+          "dupr_id": "NRVVP6",
+          "source_text": "Соколов Сергей NRVVP6"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Халютин Николай",
+          "dupr_id": "M66JOO",
+          "source_text": "Халютин Николай M66JOO"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Лихачев Артем Q5WOK4",
+          "Соколов Сергей NRVVP6"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Халютин Николай M66JOO"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 4,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 8
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 5,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 20,
+      "team_b_points_total": 30,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 67,
+      "source_id": "match_bb6b2453939fe576807f8e1c",
+      "source_revision": "3-125b60137f9cb1ca1ca327949b5cffb5",
+      "source_created_at": "2026-10-12T11:23:28.578Z",
+      "played_at_utc": "2026-10-10T11:13:00.000Z",
+      "played_at_moscow": "2026-10-10T14:13:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Лихачев Артем",
+          "dupr_id": "Q5WOK4",
+          "source_text": "Лихачев Артем Q5WOK4"
+        },
+        {
+          "name": "Халютин Николай",
+          "dupr_id": "M66JOO",
+          "source_text": "Халютин Николай M66JOO"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Мухин",
+          "dupr_id": "OJDEXL",
+          "source_text": "Илья Мухин OJDEXL"
+        },
+        {
+          "name": "Соколов Сергей",
+          "dupr_id": "NRVVP6",
+          "source_text": "Соколов Сергей NRVVP6"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Лихачев Артем Q5WOK4",
+          "Халютин Николай M66JOO"
+        ],
+        "teamB": [
+          "Илья Мухин OJDEXL",
+          "Соколов Сергей NRVVP6"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 6,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 8,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 14,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 68,
+      "source_id": "match_fb1720452c7f13e6412c8205",
+      "source_revision": "2-23deff29b2f29b308aa2420d27954098",
+      "source_created_at": "2026-10-12T11:27:53.456Z",
+      "played_at_utc": "2026-10-10T11:23:00.000Z",
+      "played_at_moscow": "2026-10-10T14:23:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Литвиненко Валентина",
+          "dupr_id": "906EZK",
+          "source_text": "Литвиненко Валентина 906EZK"
+        },
+        {
+          "name": "Пекич Елена",
+          "dupr_id": "JYQYMW",
+          "source_text": "Пекич Елена JYQYMW"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ипатов Алексей 6R6WN0",
+          "Жинкин Вадим PG4GVM"
+        ],
+        "teamB": [
+          "Литвиненко Валентина 906EZK",
+          "Пекич Елена JYQYMW"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 69,
+      "source_id": "match_c0bef26780eed55abcef03d7",
+      "source_revision": "4-5c246542ffdfc5fd3ee67d9ea7be50b2",
+      "source_created_at": "2026-10-12T11:31:55.898Z",
+      "played_at_utc": "2026-10-10T11:27:00.000Z",
+      "played_at_moscow": "2026-10-10T14:27:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Арсений Тарасов",
+          "dupr_id": "D5DJJL",
+          "source_text": "Арсений Тарасов D5DJJL"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Илья Кукушин 2PD5R7",
+          "Арсений Тарасов D5DJJL"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 4,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 7,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 70,
+      "source_id": "match_f4a303c62909717c3b4f8142",
+      "source_revision": "3-26b0dc8a871ba803413da8525b971ed8",
+      "source_created_at": "2026-10-12T11:33:00.090Z",
+      "played_at_utc": "2026-10-10T11:31:00.000Z",
+      "played_at_moscow": "2026-10-10T14:31:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        },
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ипатов Алексей 6R6WN0",
+          "Котельникова Александра XW5EY2"
+        ],
+        "teamB": [
+          "Жинкин Вадим PG4GVM",
+          "Зубова Анастасия M6ZRND"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 15,
+          "team_b_points": 13
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 26,
+      "team_b_points_total": 18,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 71,
+      "source_id": "match_daf34ecf2fb52d974d0c7c80",
+      "source_revision": "2-7afb68b94a41492027f1ff5cb0f31380",
+      "source_created_at": "2026-10-12T11:37:47.311Z",
+      "played_at_utc": "2026-10-10T11:33:00.000Z",
+      "played_at_moscow": "2026-10-10T14:33:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Михаил Поляков",
+          "dupr_id": "WMZDKQ",
+          "source_text": "Михаил Поляков WMZDKQ"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Михаил Поляков WMZDKQ",
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065",
+          "Матвей Кемаев G7Q22Q"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 9,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 20,
+      "team_b_points_total": 16,
+      "quality_flags": [
+        "roster71_conflict"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 72,
+      "source_id": "match_638cab86670744850a9b4d6d",
+      "source_revision": "3-a2123c81f139451800aab2bf24797d06",
+      "source_created_at": "2026-10-12T11:41:44.215Z",
+      "played_at_utc": "2026-10-10T11:37:00.000Z",
+      "played_at_moscow": "2026-10-10T14:37:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ипатов Алексей 6R6WN0",
+          "Зубова Анастасия M6ZRND"
+        ],
+        "teamB": [
+          "Жинкин Вадим PG4GVM",
+          "Котельникова Александра XW5EY2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 1,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 4,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 5,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 73,
+      "source_id": "match_bc4f44e2165fccaa1af48d2c",
+      "source_revision": "2-293f88266a6bcc6388854dff326f4bf5",
+      "source_created_at": "2026-10-12T11:43:51.569Z",
+      "played_at_utc": "2026-10-10T11:41:00.000Z",
+      "played_at_moscow": "2026-10-10T14:41:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Арсений Тарасов",
+          "dupr_id": "D5DJJL",
+          "source_text": "Арсений Тарасов D5DJJL"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7",
+          "Арсений Тарасов D5DJJL"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 23,
+      "team_b_points_total": 16,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 74,
+      "source_id": "match_e9e55a01df5ed161e3f2841c",
+      "source_revision": "3-ffedf499c8d3dcac40fcc2cf5d6e4a35",
+      "source_created_at": "2026-10-12T11:45:15.226Z",
+      "played_at_utc": "2026-10-10T11:43:00.000Z",
+      "played_at_moscow": "2026-10-10T14:43:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Ипатов Алексей",
+          "dupr_id": "6R6WN0",
+          "source_text": "Ипатов Алексей 6R6WN0"
+        },
+        {
+          "name": "Жинкин Вадим",
+          "dupr_id": "PG4GVM",
+          "source_text": "Жинкин Вадим PG4GVM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Ипатов Алексей 6R6WN0",
+          "Жинкин Вадим PG4GVM"
+        ],
+        "teamB": [
+          "Зубова Анастасия M6ZRND",
+          "Котельникова Александра XW5EY2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 7,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 75,
+      "source_id": "match_7a7fc811fe91c59a3134bc9c",
+      "source_revision": "2-ebf13f7d45ffea4b173692cd5688f98a",
+      "source_created_at": "2026-10-12T11:48:30.026Z",
+      "played_at_utc": "2026-10-10T11:45:00.000Z",
+      "played_at_moscow": "2026-10-10T14:45:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Литвиненко Валентина",
+          "dupr_id": "906EZK",
+          "source_text": "Литвиненко Валентина 906EZK"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Пекич Елена",
+          "dupr_id": "JYQYMW",
+          "source_text": "Пекич Елена JYQYMW"
+        },
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Литвиненко Валентина 906EZK",
+          "София Шаронова 2PMWNR"
+        ],
+        "teamB": [
+          "Пекич Елена JYQYMW",
+          "Карина Каштаньер 4PK4GM"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 6,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 76,
+      "source_id": "match_6a27463f32f50452b890d093",
+      "source_revision": "3-da47ff2964c76edc93ac640e0a77466c",
+      "source_created_at": "2026-10-12T11:50:07.541Z",
+      "played_at_utc": "2026-10-10T11:48:00.000Z",
+      "played_at_moscow": "2026-10-10T14:48:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Литвиненко Валентина",
+          "dupr_id": "906EZK",
+          "source_text": "Литвиненко Валентина 906EZK"
+        },
+        {
+          "name": "Пекич Елена",
+          "dupr_id": "JYQYMW",
+          "source_text": "Пекич Елена JYQYMW"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Зубова Анастасия",
+          "dupr_id": "M6ZRND",
+          "source_text": "Зубова Анастасия M6ZRND"
+        },
+        {
+          "name": "Котельникова Александра",
+          "dupr_id": "XW5EY2",
+          "source_text": "Котельникова Александра XW5EY2"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Литвиненко Валентина 906EZK",
+          "Пекич Елена JYQYMW"
+        ],
+        "teamB": [
+          "Зубова Анастасия M6ZRND",
+          "Котельникова Александра XW5EY2"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 7,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 77,
+      "source_id": "match_abf320a887900e37b410a599",
+      "source_revision": "2-281b5fb65ee22fdde008033e5cc72ea2",
+      "source_created_at": "2026-10-12T12:27:12.759Z",
+      "played_at_utc": "2026-10-10T12:25:00.000Z",
+      "played_at_moscow": "2026-10-10T15:25:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Владислав Демченко",
+          "dupr_id": "2QK2RE",
+          "source_text": "Владислав Демченко 2QK2RE"
+        },
+        {
+          "name": "Екатерина Огурцова",
+          "dupr_id": "M2D5EV",
+          "source_text": "Екатерина Огурцова M2D5EV"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Владислав Демченко 2QK2RE",
+          "Екатерина Огурцова M2D5EV"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065",
+          "Матвей Кемаев G7Q22Q"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 5
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 0
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 5,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 78,
+      "source_id": "match_dbe59199481d23545e1e036f",
+      "source_revision": "2-419de0132fe401aa7841bfd32bb7dd55",
+      "source_created_at": "2026-10-12T12:35:52.954Z",
+      "played_at_utc": "2026-10-10T12:27:00.000Z",
+      "played_at_moscow": "2026-10-10T15:27:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Карина Каштаньер 4PK4GM",
+          "София Шаронова 2PMWNR"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Нуртуре Коссунов 6PEQKE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 14,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 79,
+      "source_id": "match_94d6036a195289ee0383b647",
+      "source_revision": "3-c95ff47096c6a227e7a076fe86471cb4",
+      "source_created_at": "2026-10-12T12:37:01.474Z",
+      "played_at_utc": "2026-10-10T12:35:00.000Z",
+      "played_at_moscow": "2026-10-10T15:35:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "singles",
+      "team_a": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 8,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 8,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 80,
+      "source_id": "match_04fad2a49856cdc68b3dcf88",
+      "source_revision": "4-cdb1f9f151d9907e83ad00c243b306ec",
+      "source_created_at": "2026-10-12T12:47:58.970Z",
+      "played_at_utc": "2026-10-10T12:37:00.000Z",
+      "played_at_moscow": "2026-10-10T15:37:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Карина Каштаньер 4PK4GM",
+          "София Шаронова 2PMWNR"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 81,
+      "source_id": "match_2af64bc1bc4fea16ba5ece30",
+      "source_revision": "2-291b6cfd461d58c5f7bcbad0833bd74b",
+      "source_created_at": "2026-10-12T12:52:56.050Z",
+      "played_at_utc": "2026-10-10T12:47:00.000Z",
+      "played_at_moscow": "2026-10-10T15:47:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслан Нурматов",
+          "dupr_id": "X2YW5X",
+          "source_text": "Руслан Нурматов X2YW5X"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Арсений Тарасов",
+          "dupr_id": "D5DJJL",
+          "source_text": "Арсений Тарасов D5DJJL"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслан Нурматов X2YW5X",
+          "Андрей Суслов M2DO2D"
+        ],
+        "teamB": [
+          "Илья Кукушин 2PD5R7",
+          "Арсений Тарасов D5DJJL"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 8,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 11,
+          "team_b_points": 9
+        }
+      ],
+      "team_a_points_total": 31,
+      "team_b_points_total": 30,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 82,
+      "source_id": "match_30fca40d855091e7d658de1b",
+      "source_revision": "2-452e5e8e74239e2839e4a6300f624cad",
+      "source_created_at": "2026-10-12T12:56:55.612Z",
+      "played_at_utc": "2026-10-10T12:52:00.000Z",
+      "played_at_moscow": "2026-10-10T15:52:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Екатерина Огурцова",
+          "dupr_id": "M2D5EV",
+          "source_text": "Екатерина Огурцова M2D5EV"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        },
+        {
+          "name": "Владислав Демченко",
+          "dupr_id": "2QK2RE",
+          "source_text": "Владислав Демченко 2QK2RE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Екатерина Огурцова M2D5EV",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Матвей Кемаев G7Q22Q",
+          "Владислав Демченко 2QK2RE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 10,
+          "team_b_points": 12
+        }
+      ],
+      "team_a_points_total": 10,
+      "team_b_points_total": 12,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 83,
+      "source_id": "match_49819a4767a0b9e6886d65db",
+      "source_revision": "2-a3e4a4945c27daddac45c28dcf958650",
+      "source_created_at": "2026-10-12T12:58:35.354Z",
+      "played_at_utc": "2026-10-10T12:56:00.000Z",
+      "played_at_moscow": "2026-10-10T15:56:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Илья Кукушин",
+          "dupr_id": "2PD5R7",
+          "source_text": "Илья Кукушин 2PD5R7"
+        },
+        {
+          "name": "Арсений Тарасов",
+          "dupr_id": "D5DJJL",
+          "source_text": "Арсений Тарасов D5DJJL"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Илья Кукушин 2PD5R7",
+          "Арсений Тарасов D5DJJL"
+        ],
+        "teamB": [
+          "Карина Каштаньер 4PK4GM",
+          "София Шаронова 2PMWNR"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 3
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 84,
+      "source_id": "match_2b6b097a97288baa86b79c21",
+      "source_revision": "2-3d3e9879dd03c50230334189418a3e2f",
+      "source_created_at": "2026-10-12T13:02:06.491Z",
+      "played_at_utc": "2026-10-10T12:58:00.000Z",
+      "played_at_moscow": "2026-10-10T15:58:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Владислав Демченко",
+          "dupr_id": "2QK2RE",
+          "source_text": "Владислав Демченко 2QK2RE"
+        },
+        {
+          "name": "Екатерина Огурцова",
+          "dupr_id": "M2D5EV",
+          "source_text": "Екатерина Огурцова M2D5EV"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Тетерин Y5R7WP",
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Владислав Демченко 2QK2RE",
+          "Екатерина Огурцова M2D5EV"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 7
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 10,
+          "team_b_points": 12
+        }
+      ],
+      "team_a_points_total": 21,
+      "team_b_points_total": 19,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 85,
+      "source_id": "match_f348efe3e3520f58237afc35",
+      "source_revision": "2-9966e2d4d571bdbd510f91fc30d542b6",
+      "source_created_at": "2026-10-12T13:05:12.556Z",
+      "played_at_utc": "2026-10-10T13:02:00.000Z",
+      "played_at_moscow": "2026-10-10T16:02:00+03:00",
+      "event": "Euro Open Team 10 Oct - AM-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "Екатерина Огурцова",
+          "dupr_id": "M2D5EV",
+          "source_text": "Екатерина Огурцова M2D5EV"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Тетерин Y5R7WP",
+          "Матвей Кемаев G7Q22Q"
+        ],
+        "teamB": [
+          "Карина Каштаньер 4PK4GM",
+          "Екатерина Огурцова M2D5EV"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 9,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 9,
+      "team_b_points_total": 11,
+      "quality_flags": [
+        "roster_score85_conflict"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 86,
+      "source_id": "match_acd830dbd40d0d620ae2d245",
+      "source_revision": "2-dff7270475acc80583c8212137f89af4",
+      "source_created_at": "2026-10-12T13:09:55.630Z",
+      "played_at_utc": "2026-10-10T13:05:00.000Z",
+      "played_at_moscow": "2026-10-10T16:05:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-AM",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Матвей Кемаев G7Q22Q",
+          "София Шаронова 2PMWNR"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 87,
+      "source_id": "match_a6c1155d3b88afda05f961f4",
+      "source_revision": "2-595547d5e041c29e130f73f07294ed2c",
+      "source_created_at": "2026-10-12T13:11:35.425Z",
+      "played_at_utc": "2026-10-10T13:09:00.000Z",
+      "played_at_moscow": "2026-10-10T16:09:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "singles",
+      "team_a": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Андрей Тетерин Y5R7WP"
+        ],
+        "teamB": [
+          "Матвей Кемаев G7Q22Q"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 4,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 88,
+      "source_id": "match_fdfb0525d07540bad77fabd7",
+      "source_revision": "2-40ae6633d92801084f1e83624806c497",
+      "source_created_at": "2026-10-12T13:14:21.253Z",
+      "played_at_utc": "2026-10-10T13:11:00.000Z",
+      "played_at_moscow": "2026-10-10T16:11:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Карина Каштаньер",
+          "dupr_id": "4PK4GM",
+          "source_text": "Карина Каштаньер 4PK4GM"
+        },
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Карина Каштаньер 4PK4GM",
+          "София Шаронова 2PMWNR"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 8,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 89,
+      "source_id": "match_6d78aebc32575ca8200a6063",
+      "source_revision": "4-ba92d7e156f0e22e8dc3cb4c12e7cef2",
+      "source_created_at": "2026-10-12T13:17:18.184Z",
+      "played_at_utc": "2026-10-10T13:14:00.000Z",
+      "played_at_moscow": "2026-10-10T16:14:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслан Нурматов",
+          "dupr_id": "X2YW5X",
+          "source_text": "Руслан Нурматов X2YW5X"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслан Нурматов X2YW5X",
+          "Андрей Суслов M2DO2D"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 7
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 3
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 90,
+      "source_id": "match_4d4b64170f6b903c2fe4fdcd",
+      "source_revision": "2-a22d3be52babb647e57fb43312312285",
+      "source_created_at": "2026-10-12T13:21:20.763Z",
+      "played_at_utc": "2026-10-10T13:17:00.000Z",
+      "played_at_moscow": "2026-10-10T16:17:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97 / Андрей Тетерин Y5R7WP"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065 / Матвей Кемаев G7Q22Q"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 8,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 4,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 91,
+      "source_id": "match_944eff7facb4927154721ef6",
+      "source_revision": "4-12fd30cb114367fd3af9d90f107c04d1",
+      "source_created_at": "2026-10-12T13:23:15.638Z",
+      "played_at_utc": "2026-10-10T13:21:00.000Z",
+      "played_at_moscow": "2026-10-10T16:21:00+03:00",
+      "event": "Euro Open Team 10 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 9,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 9
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 1,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 21,
+      "team_b_points_total": 31,
+      "quality_flags": [
+        "score91_claim"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 92,
+      "source_id": "match_1149e4e1f5a2a6a2112d45ae",
+      "source_revision": "2-4ea55587e0d44118b90a9779e127e290",
+      "source_created_at": "2026-10-12T13:25:29.408Z",
+      "played_at_utc": "2026-10-10T13:23:00.000Z",
+      "played_at_moscow": "2026-10-10T16:23:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Матвей Кемаев G7Q22Q",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 3,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 4,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 7,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 93,
+      "source_id": "match_630a7f30d2dcde72549f4fbc",
+      "source_revision": "2-08d08dd0600243fbff9db1780cc0c2ea",
+      "source_created_at": "2026-10-12T13:29:00.447Z",
+      "played_at_utc": "2026-10-10T13:28:00.000Z",
+      "played_at_moscow": "2026-10-10T16:28:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        },
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Матвей Кемаев G7Q22Q"
+        ],
+        "teamB": [
+          "Каролина Крутова LZM065",
+          "Андрей Тетерин Y5R7WP"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 12,
+          "team_b_points": 10
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 23,
+      "team_b_points_total": 16,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 94,
+      "source_id": "match_e91adab9fda854e1d9ae4886",
+      "source_revision": "2-faeb86ea23f4d000411d4b49cddafe4e",
+      "source_created_at": "2026-10-12T13:31:36.675Z",
+      "played_at_utc": "2026-10-10T13:29:00.000Z",
+      "played_at_moscow": "2026-10-10T16:29:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Лихачев Артем",
+          "dupr_id": "Q5WOK4",
+          "source_text": "Лихачев Артем Q5WOK4"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Соколов Сергей",
+          "dupr_id": "NRVVP6",
+          "source_text": "Соколов Сергей NRVVP6"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Лихачев Артем Q5WOK4"
+        ],
+        "teamB": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Соколов Сергей NRVVP6"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 6
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 4
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 10,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 95,
+      "source_id": "match_108d3785231db1e2be6e0162",
+      "source_revision": "2-f1df18f62c223e6029ecb6fd42fe5422",
+      "source_created_at": "2026-10-12T13:34:05.684Z",
+      "played_at_utc": "2026-10-10T13:31:00.000Z",
+      "played_at_moscow": "2026-10-10T16:31:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Лихачев Артем",
+          "dupr_id": "Q5WOK4",
+          "source_text": "Лихачев Артем Q5WOK4"
+        },
+        {
+          "name": "Соколов Сергей",
+          "dupr_id": "NRVVP6",
+          "source_text": "Соколов Сергей NRVVP6"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Михаил Поляков",
+          "dupr_id": "WMZDKQ",
+          "source_text": "Михаил Поляков WMZDKQ"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Лихачев Артем Q5WOK4",
+          "Соколов Сергей NRVVP6"
+        ],
+        "teamB": [
+          "Валерий Петрук 2Z9X97",
+          "Михаил Поляков WMZDKQ"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 9
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 7
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 16,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 96,
+      "source_id": "match_138ecc011d413566e5289397",
+      "source_revision": "2-fc4217298abae27b20dbf064c0dad07e",
+      "source_created_at": "2026-10-12T13:36:55.076Z",
+      "played_at_utc": "2026-10-10T13:34:00.000Z",
+      "played_at_moscow": "2026-10-10T16:34:00+03:00",
+      "event": "Euro Open Team 10 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Евгений Прокопенков",
+          "dupr_id": "RWKEWM",
+          "source_text": "Евгений Прокопенков RWKEWM"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Наталья Попова",
+          "dupr_id": "O6GRE2",
+          "source_text": "Наталья Попова O6GRE2"
+        },
+        {
+          "name": "Олег Тетерин",
+          "dupr_id": "KZY0V6",
+          "source_text": "Олег Тетерин KZY0V6"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Валерий Петрук 2Z9X97",
+          "Евгений Прокопенков RWKEWM"
+        ],
+        "teamB": [
+          "Наталья Попова O6GRE2",
+          "Олег Тетерин KZY0V6"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 6,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 21,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 27,
+      "team_b_points_total": 13,
+      "quality_flags": [
+        "score96_review"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 97,
+      "source_id": "match_4985dcb379d469840809d94c",
+      "source_revision": "3-a5e948d7b3283fc3f01366f13ce574fb",
+      "source_created_at": "2026-10-12T13:45:35.880Z",
+      "played_at_utc": "2026-10-11T13:36:00.000Z",
+      "played_at_moscow": "2026-10-11T16:36:00+03:00",
+      "event": "Euro Open Team 11 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон  JP9WWD"
+        },
+        {
+          "name": "Бао Нгуен",
+          "dupr_id": "YN0KOG",
+          "source_text": "Бао Нгуен YN0KOG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Хо Сон  JP9WWD",
+          "Бао Нгуен YN0KOG"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 3,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 8,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 22,
+      "quality_flags": [
+        "score97_conflict"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 98,
+      "source_id": "match_a265c5765b332094539a6745",
+      "source_revision": "2-b63243da5ef685ff7bfd4c79953c28fc",
+      "source_created_at": "2026-10-12T13:47:48.413Z",
+      "played_at_utc": "2026-10-11T13:45:00.000Z",
+      "played_at_moscow": "2026-10-11T16:45:00+03:00",
+      "event": "Euro Open Team 11 Oct",
+      "match_type": "singles",
+      "team_a": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Нуртуре Коссунов 6PEQKE"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 4,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 4,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 99,
+      "source_id": "match_900e364bf2b67b941e6118bc",
+      "source_revision": "4-8c427cc0ce03441f39befef302592614",
+      "source_created_at": "2026-10-12T13:50:31.315Z",
+      "played_at_utc": "2026-10-11T13:47:00.000Z",
+      "played_at_moscow": "2026-10-11T16:47:00+03:00",
+      "event": "Euro Open Team 11 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Нуртуре Коссунов",
+          "dupr_id": "6PEQKE",
+          "source_text": "Нуртуре Коссунов 6PEQKE"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        },
+        {
+          "name": "Артем Глинкин",
+          "dupr_id": "M9N97D",
+          "source_text": "Артем Глинкин M9N97D"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Нуртуре Коссунов 6PEQKE",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "София Шаронова 2PMWNR",
+          "Артем Глинкин M9N97D"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 7,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 7,
+      "team_b_points_total": 11,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 100,
+      "source_id": "match_5517a9841dda8a6c59fd41e0",
+      "source_revision": "2-6460912ba7d43dae9baee16f9aa2e679",
+      "source_created_at": "2026-10-12T13:53:23.076Z",
+      "played_at_utc": "2026-10-11T13:50:00.000Z",
+      "played_at_moscow": "2026-10-11T16:50:00+03:00",
+      "event": "Euro Open Team 11 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслан Нурматов",
+          "dupr_id": "X2YW5X",
+          "source_text": "Руслан Нурматов X2YW5X"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Ромашов",
+          "dupr_id": "RX57KQ",
+          "source_text": "Андрей Ромашов RX57KQ"
+        },
+        {
+          "name": "Николай Иванов",
+          "dupr_id": "YM2REG",
+          "source_text": "Николай Иванов YM2REG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслан Нурматов X2YW5X",
+          "Андрей Суслов M2DO2D"
+        ],
+        "teamB": [
+          "Андрей Ромашов RX57KQ",
+          "Николай Иванов YM2REG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 1
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 5
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 6,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 101,
+      "source_id": "match_2ed814abc7f8c1ee0a60928b",
+      "source_revision": "4-a2e047e7496ea842a70be12a0f86e7c6",
+      "source_created_at": "2026-10-12T13:55:15.431Z",
+      "played_at_utc": "2026-10-11T13:53:00.000Z",
+      "played_at_moscow": "2026-10-11T16:53:00+03:00",
+      "event": "Euro Open Team 11 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон  JP9WWD"
+        },
+        {
+          "name": "Бао Нгуен",
+          "dupr_id": "YN0KOG",
+          "source_text": "Бао Нгуен YN0KOG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Хо Сон  JP9WWD",
+          "Бао Нгуен YN0KOG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 7,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 5,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 22,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 102,
+      "source_id": "match_ec54179e4ec4ce1d9e917d90",
+      "source_revision": "3-0543631a5d46e36b575f473d83b0bb25",
+      "source_created_at": "2026-10-12T13:56:43.140Z",
+      "played_at_utc": "2026-10-11T13:55:00.000Z",
+      "played_at_moscow": "2026-10-11T16:55:00+03:00",
+      "event": "Euro Open Team 11 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Руслан Нурматов",
+          "dupr_id": "X2YW5X",
+          "source_text": "Руслан Нурматов X2YW5X"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон  JP9WWD"
+        },
+        {
+          "name": "Бао Нгуен",
+          "dupr_id": "YN0KOG",
+          "source_text": "Бао Нгуен YN0KOG"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Руслан Нурматов X2YW5X",
+          "Андрей Суслов M2DO2D"
+        ],
+        "teamB": [
+          "Хо Сон  JP9WWD",
+          "Бао Нгуен YN0KOG"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 5,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 3,
+          "team_a_points": 7,
+          "team_b_points": 11
+        }
+      ],
+      "team_a_points_total": 23,
+      "team_b_points_total": 30,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 103,
+      "source_id": "match_7265707f785b664e3f757430",
+      "source_revision": "4-d4d798699bb07242f9bae790943af494",
+      "source_created_at": "2026-10-12T13:58:07.821Z",
+      "played_at_utc": "2026-10-11T13:56:00.000Z",
+      "played_at_moscow": "2026-10-11T16:56:00+03:00",
+      "event": "Euro Open Team 11 Oct",
+      "match_type": "singles",
+      "team_a": [
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "София Шаронова",
+          "dupr_id": "2PMWNR",
+          "source_text": "София Шаронова 2PMWNR"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "София Шаронова 2PMWNR"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 1
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 9,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 104,
+      "source_id": "match_ffc5841f1c0fb01f288bc573",
+      "source_revision": "4-15d82a304a2e2e993f6c2718f5e13c34",
+      "source_created_at": "2026-10-12T13:59:35.527Z",
+      "played_at_utc": "2026-10-11T13:58:00.000Z",
+      "played_at_moscow": "2026-10-11T16:58:00+03:00",
+      "event": "Euro Open Team 11 Oct - PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Руслан Нурматов",
+          "dupr_id": "X2YW5X",
+          "source_text": "Руслан Нурматов X2YW5X"
+        },
+        {
+          "name": "Андрей Суслов",
+          "dupr_id": "M2DO2D",
+          "source_text": "Андрей Суслов M2DO2D"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ],
+        "teamB": [
+          "Руслан Нурматов X2YW5X",
+          "Андрей Суслов M2DO2D"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 2,
+          "team_b_points": 11
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 10,
+          "team_b_points": 12
+        }
+      ],
+      "team_a_points_total": 12,
+      "team_b_points_total": 23,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 105,
+      "source_id": "match_5d0cbe5b4668f76641432075",
+      "source_revision": "2-c469975de963238faf96f934e957baab",
+      "source_created_at": "2026-10-12T14:07:22.563Z",
+      "played_at_utc": "2026-10-11T14:06:00.000Z",
+      "played_at_moscow": "2026-10-11T17:06:00+03:00",
+      "event": "Euro Open Team 11 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        },
+        {
+          "name": "Валерия Чекунова",
+          "dupr_id": "2ZMM74",
+          "source_text": "Валерия Чекунова 2ZMM74"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Матвей Кемаев G7Q22Q",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Валерий Петрук 2Z9X97",
+          "Валерия Чекунова 2ZMM74"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 3
+        },
+        {
+          "set_number": 2,
+          "team_a_points": 11,
+          "team_b_points": 2
+        }
+      ],
+      "team_a_points_total": 22,
+      "team_b_points_total": 5,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 106,
+      "source_id": "match_c3285a1f1f461e2f54b4a614",
+      "source_revision": "2-b2957eca26445e1580f5c7c2ee39046a",
+      "source_created_at": "2026-10-12T14:08:05.879Z",
+      "played_at_utc": "2026-10-12T14:07:00.000Z",
+      "played_at_moscow": "2026-10-12T17:07:00+03:00",
+      "event": "Euro Open Team 11 Oct",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Матвей Кемаев",
+          "dupr_id": "G7Q22Q",
+          "source_text": "Матвей Кемаев G7Q22Q"
+        },
+        {
+          "name": "Каролина Крутова",
+          "dupr_id": "LZM065",
+          "source_text": "Каролина Крутова LZM065"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Андрей Тетерин",
+          "dupr_id": "Y5R7WP",
+          "source_text": "Андрей Тетерин Y5R7WP"
+        },
+        {
+          "name": "Валерий Петрук",
+          "dupr_id": "2Z9X97",
+          "source_text": "Валерий Петрук 2Z9X97"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Матвей Кемаев G7Q22Q",
+          "Каролина Крутова LZM065"
+        ],
+        "teamB": [
+          "Андрей Тетерин Y5R7WP",
+          "Валерий Петрук 2Z9X97"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 11,
+          "team_b_points": 8
+        }
+      ],
+      "team_a_points_total": 11,
+      "team_b_points_total": 8,
+      "quality_flags": [
+        "date106_conflict"
+      ],
+      "anchor_side": null,
+      "anchor_level": null
+    },
+    {
+      "registry_number": 107,
+      "source_id": "match_880e53c442deb4890a669cdc",
+      "source_revision": "4-8b5c8b5398e652592b31b4706f992c18",
+      "source_created_at": "2026-10-13T20:20:41.448Z",
+      "played_at_utc": "2026-10-12T20:18:00.000Z",
+      "played_at_moscow": "2026-10-12T23:18:00+03:00",
+      "event": "Euro Open Team 12 Oct - Geraklion PRO-PRO",
+      "match_type": "doubles",
+      "team_a": [
+        {
+          "name": "Хо Сон",
+          "dupr_id": "JP9WWD",
+          "source_text": "Хо Сон  JP9WWD"
+        },
+        {
+          "name": "Бао Нгуен",
+          "dupr_id": "YN0KOG",
+          "source_text": "Бао Нгуен YN0KOG"
+        }
+      ],
+      "team_b": [
+        {
+          "name": "Максим Мальцев",
+          "dupr_id": "KXP2N6",
+          "source_text": "Максим Мальцев KXP2N6"
+        },
+        {
+          "name": "Вадим Мальцев",
+          "dupr_id": "RYO2XE",
+          "source_text": "Вадим Мальцев RYO2XE"
+        }
+      ],
+      "source_team_strings": {
+        "teamA": [
+          "Хо Сон  JP9WWD",
+          "Бао Нгуен YN0KOG"
+        ],
+        "teamB": [
+          "Максим Мальцев KXP2N6",
+          "Вадим Мальцев RYO2XE"
+        ]
+      },
+      "sets": [
+        {
+          "set_number": 1,
+          "team_a_points": 15,
+          "team_b_points": 6
+        }
+      ],
+      "team_a_points_total": 15,
+      "team_b_points_total": 6,
+      "quality_flags": [],
+      "anchor_side": null,
+      "anchor_level": null
+    }
+  ]
+}

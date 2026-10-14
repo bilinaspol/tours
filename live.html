@@ -9,11 +9,13 @@
 </style>
 <style>
 .match-meta{margin-bottom:10px}.match-title{margin:0 0 4px}.teams{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:10px;align-items:center}.teams .team{grid-column:1}.teams .team-b{border-top:1px solid #e5e5e5;padding-top:8px;margin-top:8px}.teams .score{grid-column:2;grid-row:1 / span 2;max-width:94px;margin:0;text-align:right;overflow-wrap:anywhere}.match .team,.match .score{font-size:15px;font-weight:700}
+.export-links{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}.export-links a{display:inline-block;border:1px solid #a9c4bd;background:#edf4ef;border-radius:9px;padding:8px 11px;font-weight:650;overflow-wrap:anywhere}.export-note{font-size:13px;color:#506d70;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
 <header><div class="wrap"><a href="./">← BilinaSpol</a></div></header>
 <main>
+<section id="data-export"><h2>Данные для расчётов · №6–107</h2><p>Полный снимок: <strong>102 встречи · 182 сета · 51 игрок</strong>. Номера №6–107 включены без исключений.</p><div class="export-links"><a href="./data/games-6-107-for-claude.txt" download>TXT для Claude</a><a href="./data/games-6-107.json" download>JSON</a><a href="./data/games-6-107-sets.csv" download>CSV по сетам</a><a href="./data/games-6-107.html">Все данные без JavaScript</a><a href="https://tours.multirate.cc/api/matches">Живой API всех игр</a></div><p class="export-note">Файлы — снимок от 14 октября 2026, 16:43 UTC, не автообновляемая база. Составы, DUPR ID, даты и исходный счёт каждого сета сохранены. Спорные записи отмечены внутри файлов, но не исправлены наугад. Роли якорей и их рейтинги на момент встречи в реестре не заданы. CSV предназначен для анализа, не для импорта в DUPR.</p></section>
 <p id="status" role="status" class="muted">Загрузка игр…</p>
 <section id="join" hidden><p>Новые игры и счёт можно добавлять без заявки. Для изменения уже записанной игры нужно разрешение администратора.</p><button type="button" id="join-button">Запросить право редактирования</button><p id="join-state" class="hint"></p></section>
 <section id="create" hidden>
