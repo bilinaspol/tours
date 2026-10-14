@@ -51,7 +51,8 @@ function setSession(value){
   $('login-box').hidden=true;$('create').hidden=false;scheduleExpiry();
 }
 const text=(tag,value,cls)=>{const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el};
-const names=value=>value.split('\n').map(s=>s.trim()).filter(Boolean);
+// Pasted spreadsheet tabs are word separators, not part of a player's name.
+const names=value=>value.split('\n').map(s=>s.replace(/\t/g,' ').trim()).filter(Boolean);
 const score=sets=>(sets||[]).map(s=>`${s.a}:${s.b}`).join(', ');
 const parseScore=value=>{if(!value.trim())return [];return value.split(',').map(part=>{const m=/^\s*(\d{1,2})\s*:\s*(\d{1,2})\s*$/.exec(part);if(!m)throw Error('Счёт: используйте формат 11:9, 11:7');return {a:Number(m[1]),b:Number(m[2])}})};
 const mskInput=date=>new Date(date.getTime()+3*3600*1000).toISOString().slice(0,16);
